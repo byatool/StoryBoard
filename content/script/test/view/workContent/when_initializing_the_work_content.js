@@ -19,36 +19,61 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
   
   //Fields
   
+  var ChapterId_ = goog.string.getRandomString();  //remove?
+  var ChapterTitleText_ = goog.string.getRandomString();  //remove?
+  var ChapterTitleUrl_ = goog.string.getRandomString();  //remove?
+  
   var ContainerId_ = goog.string.getRandomString();
   
+  var appendChild_;
   var createADiv_;
   var currentItem_;
+  var initializeEditableDiv_;  //remove?
   var options_;
   var parentRow_;
   var refreshGrid_;
+  var workContentRowHeader_;
   
   
   //Test Hooks
   
   beforeEach(function() {
     parentRow_ = {};
+    options_ = {};
+    options_[Constant_.ChapterTitleUrl] = ChapterTitleUrl_;
+    
+    currentItem_ = {};
+    currentItem_[Constant_.ParameterChapterTitle] = ChapterTitleText_;
+    currentItem_[Constant_.ParameterChapterId] = ChapterId_;
+    
+    initializeEditableDiv_ = function(){};
     
     createADiv_ = function(attributes){
       switch(attributes[ControlConstant_.Class]) {
-      case Constant_.ContainerClass:
+      case Constant_.WorkContentRow:
         return parentRow_;
-        break;               
+        break;
+        
+      case Constant_.WorkContentRowHeader:
+        return workContentRowHeader_;
+        break;
+        
       default:
         return parentRow_;
         break;
       }};
+    
+    
+    appendChild_ = function(){};
+    refreshGrid_ = function(){};
+
   });
   
   
   //Support Methods
   
   var callTheMethod_ = function() {
-    return Current_.create(currentItem_, options_, refreshGrid_, createADiv_);
+    return Current_.create(currentItem_, options_, refreshGrid_, createADiv_, initializeEditableDiv_);
   };
   
   
@@ -59,9 +84,9 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
     
     createADiv_ = function(attributes) {
       methodWasCalled = methodWasCalled ||
-        (Constant_.WorkContentRowClass !== undefined &&
-         attributes[ControlConstant_.Id] === Constant_.WorkContentRowClass &&
-         attributes[ControlConstant_.Class] === Constant_.WorkContentRowClass);
+        (Constant_.WorkContentRow !== undefined &&
+         attributes[ControlConstant_.Id] === Constant_.WorkContentRow &&
+         attributes[ControlConstant_.Class] === Constant_.WorkContentRow);
       
       return parentRow_;
     };
@@ -71,6 +96,10 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
     expect(methodWasCalled).toBe(true);
   });
   
+  
+  
+  
+
   
   it('should return the parent container.', function() {
     expect(callTheMethod_()).toBe(parentRow_);

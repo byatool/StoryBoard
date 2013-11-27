@@ -296,7 +296,7 @@ src.base.control.editableDiv.initialize =
     showElement = showElement ?
       showElement :
       goog.style.showElement;
-
+    
     appendChild = appendChild ?
       appendChild :
       goog.dom.appendChild;
@@ -359,7 +359,7 @@ src.base.control.editableDiv.initialize =
                                                       createTheForm,
                                                       appendChild,
                                                       showElement);
-
+    
     var form = formResult[ControlConstant_.CreatedControl];
 
 
