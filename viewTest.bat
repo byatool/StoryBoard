@@ -1,0 +1,24 @@
+python c:/lib/closure/closure-library/closure/bin/closurebuilder.py ^
+--jvm_flags="-d32" ^
+--root="c:/lib/closure/closure-library/" ^
+--root="content/script/live/view/" ^
+--root="content/script/live/control/" ^
+--root="content/script/live/helper/" ^
+--root="content/script/live/validation/" ^
+--root="content/script/test/view/" ^
+--namespace="src.base.control.dropDownList" ^
+--namespace="src.base.control.formComponent" ^
+--namespace="src.base.control.gridBuilder" ^
+--namespace="src.base.control.simpleInformationDisplay" ^
+--namespace="src.base.helper.arrayHelper" ^
+--namespace="src.site.validation.validateSocialSecurityNumber" ^
+--namespace="src.site.validation.validateText" ^
+--namespace="src.test.view.mainContent.whenInitializingAMainContent" ^
+--namespace="src.test.view.workContentRow.whenInitializingAWorkContentRow" ^
+--output_mode=compiled ^
+--compiler_jar="c:/lib/closure/compiler.jar" ^
+--compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" ^
+--compiler_flags="--externs=content/script/run/jasmine/jasmine.js" ^
+--compiler_flags="--externs=content/script/run/jasmine/jasmine-html.js" ^
+--compiler_flags="--warning_level=QUIET" ^
+--compiler_flags="--generate_exports" > "content/script/run/view/view.js"
