@@ -1,5 +1,6 @@
 goog.require('goog.string');
 goog.require('src.base.control.controlConstant');
+goog.require('src.base.control.editableDiv');
 goog.require('src.site.view.workContentRow');
 
 
@@ -28,7 +29,7 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
   var appendChild_;
   var createADiv_;
   var currentItem_;
-  var initializeEditableDiv_;  //remove?
+  var createTheRowHeader_;  //remove?
   var options_;
   var parentRow_;
   var refreshGrid_;
@@ -46,7 +47,7 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
     currentItem_[Constant_.ParameterChapterTitle] = ChapterTitleText_;
     currentItem_[Constant_.ParameterChapterId] = ChapterId_;
     
-    initializeEditableDiv_ = function(){};
+    createTheRowHeader_ = function(){};
     
     createADiv_ = function(attributes){
       switch(attributes[ControlConstant_.Class]) {
@@ -66,14 +67,15 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
     
     appendChild_ = function(){};
     refreshGrid_ = function(){};
-
+    
   });
   
   
   //Support Methods
   
   var callTheMethod_ = function() {
-    return Current_.create(currentItem_, options_, refreshGrid_, createADiv_, initializeEditableDiv_);
+    return Current_.create(currentItem_, options_, refreshGrid_, createADiv_, createTheRowHeader_,
+                           appendChild_);
   };
   
   
@@ -95,11 +97,25 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
     
     expect(methodWasCalled).toBe(true);
   });
-  
-  
-  
-  
 
+
+  it('should create the row header.', function() {
+    var methodWasCalled = false;
+    
+    createTheRowHeader_ = function(currentItem, options, createADiv,
+                                   initializeEditableDiv, appendChild){
+      methodWasCalled = currentItem === currentItem_ &&
+        options === options_ &&
+        createADiv === createADiv_ &&
+        initializeEditableDiv === src.base.control.editableDiv.initialize &&
+        appendChild === appendChild_;
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
   
   it('should return the parent container.', function() {
     expect(callTheMethod_()).toBe(parentRow_);

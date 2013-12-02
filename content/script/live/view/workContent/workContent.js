@@ -1,3 +1,4 @@
+goog.require('goog.dom');
 goog.require('src.base.control.controlConstant');
 goog.require('src.base.control.editableDiv');
 goog.require('src.base.helper.domCreation');
@@ -63,11 +64,13 @@ src.site.view.workContentRow.createTheRowHeader =
                                                    options[Constant_.ChapterTitleUrl]);
     
     appendChild(header, chapterTitleHolder);
-
+    
     var workTitleHolder = initializeEditableDiv(Constant_.WorkTitleContainerId,
                                                 currentItem[Constant_.ParameterWorkTitle],
                                                 currentItem[Constant_.ParameterWorkId],
                                                 options[Constant_.WorkTitleUrl]);
+    
+    appendChild(header, workTitleHolder);
   };
 
 
@@ -81,24 +84,26 @@ src.site.view.workContentRow.createTheRowHeader =
  refresh the current grid.
  @param {?function} createADiv The function used to create
  a div.
- @param {?function} initializeEditableDiv The function used 
-to create an editable div.
+ @param {?function} createTheRowHeader The function used 
+ to create the header.
+ @param {?function} appendChild The function used to 
+ add elements to the content row.
  @return {Object} The created control.
  @protected
  */
 src.site.view.workContentRow.create =
   function(currentItem, options, refreshGrid, createADiv,
-           initializeEditableDiv, appendChild) {
+           createTheRowHeader, appendChild) {
     
     createADiv = createADiv ? 
       createADiv : 
       src.base.helper.domCreation.div;
     
-    initializeEditableDiv = initializeEditableDiv ? 
-      initializeEditableDiv : 
-      src.base.control.editableDiv.initialize;
+    appendChild = appendChild ?
+      appendChild :
+      goog.dom.appendChild;
     
-    /* Start */
+     /* Start */
     
     var Constant_ = src.site.view.workContentRow.constant;
     var Current_ = src.site.view.workContentRow;
@@ -108,9 +113,16 @@ src.site.view.workContentRow.create =
                                          Constant_.WorkContentRow,
                                          createADiv);
     
+    
+    var header = createTheRowHeader(currentItem,
+                                    options,
+                                    createADiv,
+                                    src.base.control.editableDiv.initialize,
+                                    appendChild);
+    
     //src.site.view.workContentRow.createTheRowHeader
-    //remove initializeEditableDiv?
-      
+    //  src.base.control.editableDiv.initialize;
+    
     
     //currentItem['chapterId']
     //currentItem['pageId']

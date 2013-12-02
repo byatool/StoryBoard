@@ -144,6 +144,26 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
   });
   
   
+  it('should append the work title holder to the parent.', function() {
+    var methodWasCalled = false;
+    var workTitleHolder = {};
+    
+    initializeEditableDiv_ = function(name) {
+      return name === Constant_.WorkTitleContainerId ?
+        workTitleHolder :
+        {};
+    };
+    
+    appendChild_ = function(parent, child){
+      methodWasCalled = methodWasCalled || 
+        (parent === workContentRowHeader_ && child === workTitleHolder);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
 };
 
 describe('When creating the row header, it', function() {
