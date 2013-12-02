@@ -103,11 +103,13 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
     var methodWasCalled = false;
     
     createTheRowHeader_ = function(currentItem, options, createADiv,
-                                   initializeEditableDiv, appendChild){
+                                   initializeEditableDiv, setTextContent,
+                                   appendChild){
       methodWasCalled = currentItem === currentItem_ &&
         options === options_ &&
         createADiv === createADiv_ &&
         initializeEditableDiv === src.base.control.editableDiv.initialize &&
+        setTextContent === goog.dom.setTextContent &&
         appendChild === appendChild_;
     };
     

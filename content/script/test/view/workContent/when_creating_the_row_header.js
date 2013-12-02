@@ -18,13 +18,12 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
   
   //Fields
   
-  
-  
   var appendChild_;
   var createADiv_;
   var currentItem_;
   var initializeEditableDiv_;
   var options_;
+  var setTextContent_;
   var workContentRowHeader_;
   
   //Test Hooks
@@ -37,6 +36,8 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     appendChild_ = function(){ };
     createADiv_ = function(){ return workContentRowHeader_; };
     initializeEditableDiv_ = function(){};
+    setTextContent_ = function(){};
+    
   });
   
   
@@ -44,7 +45,8 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
   
   var callTheMethod_ = function() {
     return Current_.createTheRowHeader(currentItem_, options_, createADiv_,
-                                       initializeEditableDiv_, appendChild_);
+                                       initializeEditableDiv_, setTextContent_,
+                                       appendChild_);
   };
   
   //Test Methods
@@ -162,6 +164,73 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     callTheMethod_();
     
     expect(methodWasCalled).toBe(true);
+  });
+  
+  
+  it('should create the author name holder.', function() {
+    var methodWasCalled = false;
+    
+    createADiv_ = function(attributes){
+      methodWasCalled = methodWasCalled ||
+        (Constant_.AuthorNameContainer !== undefined &&
+         attributes[ControlConstant_.Id] === Constant_.AuthorNameContainer &&
+         attributes[ControlConstant_.Class] === Constant_.AuthorNameContainer);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+
+  it('should set the text of the author name container.', function() {
+    var methodWasCalled = false;
+    var authorName = goog.string.getRandomString();
+    var authorNameHolder = {};
+    
+    createADiv_ = function(attributes) {
+      return attributes[ControlConstant_.Id] === Constant_.AuthorNameContainer ?
+        authorNameHolder :
+        workContentRowHeader_;
+    };
+    
+    currentItem_[Constant_.ParameterAuthorName] = authorName;
+    
+    setTextContent_ = function(element, text){
+      methodWasCalled = methodWasCalled ||
+        (element === authorNameHolder &&
+         Constant_.ParameterAuthorName !== undefined  &&
+         text === currentItem_[Constant_.ParameterAuthorName]);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
+  
+  it('should append the author name holder to the parent.', function() {
+    var methodWasCalled = false;
+    var authorNameHolder = {};
+    
+    createADiv_ = function(attributes) {
+      return attributes[ControlConstant_.Id] === Constant_.AuthorNameContainer ?
+        authorNameHolder :
+        workContentRowHeader_;
+    };
+    
+    appendChild_ = function(parent, child){
+      methodWasCalled = methodWasCalled || 
+        (parent === workContentRowHeader_ && child === authorNameHolder);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
+  
+  it('should return the created header row.', function() {
+    expect(callTheMethod_()).toBe(workContentRowHeader_);
   });
   
 };

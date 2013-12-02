@@ -16,6 +16,7 @@ python c:/lib/closure/closure-library/closure/bin/closurebuilder.py ^
 --namespace="src.test.view.mainContent.whenInitializingAMainContent" ^
 --namespace="src.test.view.workContentRow.whenInitializingAWorkContentRow" ^
 --namespace="src.test.view.workContentRow.whenCreatingTheRowHeader" ^
+--namespace="src.test.view.workContentRow.whenCreatingTheWorkBody" ^
 --output_mode=compiled ^
 --compiler_jar="c:/lib/closure/compiler.jar" ^
 --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" ^

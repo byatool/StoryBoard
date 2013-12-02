@@ -1,6 +1,21 @@
 goog.provide('src.site.view.workContentRow.constant');
 
 
+// Constant_.WorkBodyContainerId !== undefined &&
+//   Constant_.ParameterWorkId !== undefined &&
+//   Constant_.ParameterWorkBody !== undefined &&
+//   Constant_.WorkBodyUrl !== undefined &&
+
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContentRow.constant.AuthorNameContainer = 'authorNameContainer';
+
+
 /**
  @const
  @type {string}
@@ -15,6 +30,14 @@ src.site.view.workContentRow.constant.ChapterTitleContainerId = 'chapterTitle';
  @protected
  */
 src.site.view.workContentRow.constant.ChapterTitleUrl = 'updateChapterUrl';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContentRow.constant.ParameterAuthorName = 'authorName';
 
 
 /**
@@ -37,6 +60,14 @@ src.site.view.workContentRow.constant.ParameterChapterTitle = 'chapterTitle';
  @type {string}
  @protected
  */
+src.site.view.workContentRow.constant.ParameterWorkBody = 'workBody';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
 src.site.view.workContentRow.constant.ParameterWorkTitle = 'workTitle';
 
 
@@ -46,6 +77,30 @@ src.site.view.workContentRow.constant.ParameterWorkTitle = 'workTitle';
  @protected
  */
 src.site.view.workContentRow.constant.ParameterWorkId = 'workId';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContentRow.constant.WorkBodyTextContainerId = 'workBodyTextContainer';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContentRow.constant.WorkBodyUrl = 'updateWorkBodyUrl';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContentRow.constant.WorkContentBody = 'workContentBody';
 
 
 /**
