@@ -19,14 +19,14 @@ goog.provide('src.site.view.workContentRow');
  */
 src.site.view.workContentRow.createAnEmptyDiv_ =
   function(id, cssClass, createADiv) {
-
+    
     var Constant_ = src.site.view.workContentRow.constant;
     var ControlConstant_ = src.base.control.controlConstant;
-
+    
     var divAttributes = {};
     divAttributes[ControlConstant_.Id] = id;
     divAttributes[ControlConstant_.Class] = cssClass;
-
+    
     return createADiv(divAttributes);
   };
 
@@ -51,18 +51,18 @@ src.site.view.workContentRow.createTheRowBody =
            appendChild) {
     var Constant_ = src.site.view.workContentRow.constant;
     var Current_ = src.site.view.workContentRow;
-
+    
     var bodyContainer = Current_.createAnEmptyDiv_(Constant_.WorkContentBody,
                                                    Constant_.WorkContentBody,
                                                    createADiv);
-
+    
     var bodyText = initializeEditableDiv(Constant_.WorkBodyTextContainerId,
                                          currentItem[Constant_.ParameterWorkBody],
                                          currentItem[Constant_.ParameterWorkId],
                                          options[Constant_.WorkBodyUrl]);
-
+    
     appendChild(bodyContainer, bodyText);
-
+    
     return bodyContainer;
   };
 
@@ -86,30 +86,30 @@ src.site.view.workContentRow.createTheRowHeader =
   function(currentItem, options, createADiv,
            initializeEditableDiv, setTextContent, 
            appendChild) {
-
+    
     var Constant_ = src.site.view.workContentRow.constant;
     var Current_ = src.site.view.workContentRow;
     var ControlConstant_ = src.base.control.controlConstant;
-
+    
     var header = Current_.createAnEmptyDiv_(Constant_.WorkContentRowHeader,
                                             Constant_.WorkContentRowHeader,
                                             createADiv);
-
+    
     var chapterTitleHolder = initializeEditableDiv(Constant_.ChapterTitleContainerId,
                                                    currentItem[Constant_.ParameterChapterTitle],
                                                    currentItem[Constant_.ParameterChapterId],
                                                    options[Constant_.ChapterTitleUrl]);
-
+    
     appendChild(header, chapterTitleHolder);
-
+    
     var workTitleHolder = initializeEditableDiv(Constant_.WorkTitleContainerId,
                                                 currentItem[Constant_.ParameterWorkTitle],
                                                 currentItem[Constant_.ParameterWorkId],
                                                 options[Constant_.WorkTitleUrl]);
-
+    
     appendChild(header, workTitleHolder);
-
-
+    
+    
 
     var authorNameHolder = Current_.createAnEmptyDiv_(Constant_.AuthorNameContainer,
                                                       Constant_.AuthorNameContainer,
@@ -135,6 +135,8 @@ src.site.view.workContentRow.createTheRowHeader =
  a div.
  @param {?function} createTheRowHeader The function used
  to create the header.
+ @param {?function} createTheRowBody The function used to
+ create the text container.
  @param {?function} appendChild The function used to
  add elements to the content row.
  @return {Object} The created control.
@@ -142,27 +144,35 @@ src.site.view.workContentRow.createTheRowHeader =
  */
 src.site.view.workContentRow.create =
   function(currentItem, options, refreshGrid, createADiv,
-           createTheRowHeader, appendChild) {
-
+           createTheRowHeader, createTheRowBody, appendChild) {
+    
     createADiv = createADiv ?
       createADiv :
       src.base.helper.domCreation.div;
-
+    
+    createTheRowHeader = createTheRowHeader ? 
+      createTheRowHeader : 
+      src.site.view.workContentRow.createTheRowHeader;
+    
+    createTheRowBody = createTheRowBody ? 
+      createTheRowBody : 
+      src.site.view.workContentRow.createTheRowBody;
+    
     appendChild = appendChild ?
       appendChild :
       goog.dom.appendChild;
-
+    
      /* Start */
-
+    
     var Constant_ = src.site.view.workContentRow.constant;
     var Current_ = src.site.view.workContentRow;
     var ControlConstant_ = src.base.control.controlConstant;
-
+    
     var row = Current_.createAnEmptyDiv_(Constant_.WorkContentRow,
                                          Constant_.WorkContentRow,
                                          createADiv);
-
-
+    
+    
     var header = createTheRowHeader(currentItem,
                                     options,
                                     createADiv,
@@ -170,27 +180,31 @@ src.site.view.workContentRow.create =
                                     goog.dom.setTextContent,
                                     appendChild);
 
-
-
-
-
-    // src.site.view.workContentRow.createTheRowHeader
-    // src.base.control.editableDiv.initialize;
-
-
+    appendChild(row, header);
+    
+    var body = createTheRowBody(currentItem,
+                                options,
+                                createADiv,
+                                src.base.control.editableDiv.initialize,
+                                appendChild);
+    
+    appendChild(row, body);
+    
     //currentItem['chapterId']
     //currentItem['pageId']
     //currentItem['workId']
-
-
-    //options['UpdateChapterUrl'] => chapterId
-    //options['UpdateChapterTitle'] => workId
-    //options['UpdateChapterAuthorName'] => workId
-    //options['UpdatePageText'] => pageId
+     
+    // Options
+    // WorkBodyUrl
+    // ChapterTitleUrl
+    // WorkTitleUrl
+    
+    //Item
+    // ParameterChapterId
+    // ParameterChapterTitle
+    // ParameterWorkId
+    // ParameterWorkBody
+    // ParameterWorkTitle
+    
     return row;
   };
-
-/*
-
-
- */
