@@ -2,7 +2,7 @@
   (:use
    [hiccup core page]
    [cheshire.core :only (generate-string)]
-   [storyboard.view.utility :only append-return]))
+   [storyboard.view.utility :only (append-return)]))
 
 
 (defn master-page [to-inject]
@@ -14,7 +14,7 @@
    [:body
     to-inject]))
 
-(defn read-work []
+(defn read-work [book-id]
   (let [script-text (append-return
                      "var content = src.site.view.mainContent.initialize("
                      "  '10', "
@@ -22,14 +22,16 @@
                      "  '', "
                      "  '', "
                      "  '', "
-                     "  'workContainer', "
+                     "  'workContainer' "
                      " );"
-                     
-                     )]
+                     " "
+                     "var mainContainer = document.getElementById('mainContainer');"
+                     "mainContainer.appendChild(content);")]
     (master-page
      [:div
       [:div {:id "mainContainer"}]
-      [:script ]])))
+      [:script
+       script-text]])))
 
 
 (defn retrieve-work [work-id]
