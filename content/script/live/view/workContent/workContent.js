@@ -190,21 +190,5 @@ src.site.view.workContentRow.create =
     
     appendChild(row, body);
     
-    //currentItem['chapterId']
-    //currentItem['pageId']
-    //currentItem['workId']
-     
-    // Options
-    // WorkBodyUrl
-    // ChapterTitleUrl
-    // WorkTitleUrl
-    
-    //Item
-    // ParameterChapterId
-    // ParameterChapterTitle
-    // ParameterWorkId
-    // ParameterWorkBody
-    // ParameterWorkTitle
-    
     return row;
   };

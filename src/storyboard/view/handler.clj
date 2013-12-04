@@ -11,9 +11,9 @@
 
 
 (defroutes app-routes
-  (GET "/:bookId" [bookId] (read-work bookId))
-  (|-| retrieveWork ?bookId
-       (retrieve-work bookId))
+  (GET "/:workId" [workId] (read-work workId))
+  (|-| retrieveWork ?bookId ?page
+       (retrieve-work bookId page))
   (route/resources "/")
   (route/not-found "Not Found"))
 

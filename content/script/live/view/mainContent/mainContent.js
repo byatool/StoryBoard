@@ -5,6 +5,7 @@ goog.require('src.base.control.gridBuilder.constant');
 goog.require('src.base.helper.domCreation');
 goog.require('src.site.view.constant');
 goog.require('src.site.view.mainContent.constant');
+goog.require('src.site.view.workContentRow');
 goog.require('src.site.view.workContentRow.constant');
 
 
@@ -31,8 +32,9 @@ goog.provide('src.site.view.mainContent');
  @export
  */
 src.site.view.mainContent.initialize =
-  function(workId, retrieveWorkUrl, chapterTitleUrl, workTitleUrl, workBodyUrl,
-           containerId, createADiv, initializeTheGrid, appendChild) {
+  function(workId, retrieveWorkUrl, chapterTitleUrl,
+           workTitleUrl, workBodyUrl, containerId,
+           createADiv, initializeTheGrid, appendChild) {
     
     createADiv = createADiv ? 
       createADiv : 
@@ -52,6 +54,7 @@ src.site.view.mainContent.initialize =
     var ControlConstant_ = src.base.control.controlConstant;
     var GridBuilderConstant_ = src.base.control.gridBuilder.constant;
     var ViewConstant_ = src.site.view.constant;
+    var WorkContent_ = src.site.view.workContentRow;
     var WorkContentConstant_ = src.site.view.workContentRow.constant;
     
     
@@ -60,6 +63,7 @@ src.site.view.mainContent.initialize =
     containerAttributes[ControlConstant_.Class] = Constant_.ContainerClass;
     var container = createADiv(containerAttributes);
     
+    //src.base.control.gridBuilder.constant.CreateARow
     
     var contentGridOptions = {};
     contentGridOptions[GridBuilderConstant_.ContainerClass] = Constant_.WorkContainer;
@@ -78,7 +82,8 @@ src.site.view.mainContent.initialize =
     contentGridOptions[WorkContentConstant_.ChapterTitleUrl] = chapterTitleUrl;
     contentGridOptions[WorkContentConstant_.WorkBodyUrl] = workBodyUrl;
     contentGridOptions[WorkContentConstant_.WorkTitleUrl] = workTitleUrl;
-     
+    contentGridOptions[GridBuilderConstant_.CreateARow] = WorkContent_.create;
+    
     var gridResult = initializeTheGrid(contentGridOptions);
     appendChild(container, gridResult[ControlConstant_.CreatedControl]);
     

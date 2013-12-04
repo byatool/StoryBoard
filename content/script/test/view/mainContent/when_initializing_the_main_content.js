@@ -4,6 +4,7 @@ goog.require('src.base.control.gridBuilder');
 goog.require('src.base.control.gridBuilder.constant');
 goog.require('src.site.view.constant');
 goog.require('src.site.view.mainContent');
+goog.require('src.site.view.workContentRow');
 goog.require('src.site.view.workContentRow.constant');
 
 
@@ -21,6 +22,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   var Current_ = src.site.view.mainContent;
   var GridBuilderConstant_ = src.base.control.gridBuilder.constant;
   var ViewConstant_ = src.site.view.constant;
+  var WorkContent_ = src.site.view.workContentRow;
   var WorkContentConstant_ = src.site.view.workContentRow.constant;
   
   
@@ -142,6 +144,21 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   
   
   
+  it('should pass on the correct create row function.', function() {
+    var methodWasCalled = false;
+    
+    initializeTheGrid_ = function(options) {
+      methodWasCalled = options[GridBuilderConstant_.CreateARow] === WorkContent_.create;
+      
+      return grid_;
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
+  
   it('should append the grid to the parent container.', function() {
     var methodWasCalled = false;
     
@@ -155,7 +172,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
     expect(methodWasCalled).toBe(true);
   });
   
-
+  
   
   it('should return the parent container.', function() {
     expect(callTheMethod_()).toBe(parentContainer_);

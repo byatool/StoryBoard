@@ -1,4 +1,4 @@
-(ns storyboard.view.utility
+(ns storyboard.utility.web-utility
   (:use
    [clojure.string :only (join capitalize blank?)]))
 
