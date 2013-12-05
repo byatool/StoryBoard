@@ -6,7 +6,7 @@ goog.provide('src.site.view.mainContent.constant');
  @type {string}
  @protected
  */
-src.site.view.mainContent.constant.ContainerClass = 'mainContentContainer';
+src.site.view.mainContent.constant.ContainerClass = 'gridBuilderContainer';
 
 
 /**

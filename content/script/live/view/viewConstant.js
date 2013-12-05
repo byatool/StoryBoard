@@ -6,6 +6,14 @@ goog.provide('src.site.view.constant');
  @type {string}
  @protected
  */
+src.site.view.constant.Page = 'page';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
 src.site.view.constant.PageId = 'pageId';
 
 

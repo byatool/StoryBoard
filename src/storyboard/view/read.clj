@@ -4,7 +4,8 @@
    [cheshire.core :only (generate-string)]
    [storyboard.utility.web-utility :only (append-return resolve-next-page resolve-previous-page)]
    [storyboard.data.fake :only (authors works chapters pages)]
-   [storyboard.view.default :only (master-page)]))
+   [storyboard.view.default :only (master-page)]
+   clojure.tools.trace ))
 
 (defrecord workPageResponse [authorName chapterId chapterTitle workId workBody workTitle])
 (def items-per-page 1)
@@ -15,7 +16,7 @@
                      "var content = src.site.view.mainContent.initialize("
                      "  '1', "
                      "  'retrieveWork/', "
-                     "  '', "
+                     "  'updateChapterTitle/', "
                      "  '', "
                      "  '', "
                      "  'workContainer' "
@@ -28,8 +29,6 @@
       [:div {:id "mainContainer"}]
       [:script
        script-text]])))
-
-
 
 
 (defn retrieve-work-page [work-id page]
@@ -47,16 +46,11 @@
 
 
 (defn retrieve-work [work-id page]
-  (let [total-count-of-pages 1
-        previous-page        0
-        next-page            0]
+  (let [total-count-of-pages (/ (count pages) items-per-page)
+        previous-page        (resolve-previous-page page)
+        next-page            (resolve-next-page page total-count-of-pages)]
     (generate-string
      {:PreviousPage previous-page
       :NextPage next-page
       :TotalCountOfPages total-count-of-pages
       :List [(retrieve-work-page work-id page)]})))
-
-
-
-
-

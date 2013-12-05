@@ -108,7 +108,7 @@ src.site.view.workContentRow.constant.WorkContentBody = 'workContentBody';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkContentRow = 'workContentRow';
+src.site.view.workContentRow.constant.WorkContentRow = 'gridBuilderRowClass';
 
 /**
  @const
