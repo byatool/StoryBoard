@@ -19,9 +19,12 @@
 (def pages [(Page. 1 "This is the first body." (first chapters))
             (Page. 2 "This is the second body." (first chapters))])
 
+
 (defn update-chapter-title [id text]
-  (def chapters (map
-                 #(if (= id (:id %))
-                    (assoc % :title text )
-                    %)
-                 chapters)))
+  (do
+    (def chapters (map
+                  #(if (= id (:id %))
+                     (assoc % :title text )
+                     %)
+                  chapters))
+    (trace chapters)))

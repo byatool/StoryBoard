@@ -5,6 +5,7 @@
    [storyboard.utility.web-utility :only (append-return resolve-next-page resolve-previous-page)]
    [storyboard.data.fake :only (authors works chapters pages)]
    [storyboard.view.default :only (master-page)]
+   [storyboard.macro.clojure-macro :only (t-t)]
    clojure.tools.trace ))
 
 (defrecord workPageResponse [authorName chapterId chapterTitle workId workBody workTitle])
@@ -31,18 +32,42 @@
        script-text]])))
 
 
+(macroexpand-1
+ '(t-t
+   works
+   (filter #(= 1 (:id %)))))
+
+(macroexpand
+ '(->
+   works
+   ((clojure.core/partial filter #(= 1 (:id %))))))
+
+(macroexpand '((clojure.core/partial filter #(= 1 (:id %)))))
+(macroexpand-1 '(t-t filter #(= 1 (:id %))))
+(->
+ works
+ ((clojure.core/partial filter #(= 1 (:id %)))))
+
+(->
+ works
+ (t-t filter #(= 1 (:id %))))
+
+
 (defn retrieve-work-page [work-id page]
-  (let [needed-work (first (filter #(= work-id (:id %)) works))
+  (let [needed-work (first
+                     (filter #(= work-id (:id %)) works))
         needed-page (first
                      (drop (* page items-per-page)
                            (filter #(= work-id (:id (:work (:chapter %)))) pages)))]
-    (workPageResponse.
-     (:name (:author needed-work))
-     (:id (:chapter needed-page))
-     (:title (:chapter needed-page))
-     (:id needed-work)
-     (:body needed-page)
-     (:title needed-work))))
+    (let [needed-chapter (first
+                          (filter #(= (:id %) (:id (:chapter needed-page))) chapters))]
+      (workPageResponse.
+       (:name (:author needed-work))
+       (:id needed-chapter)
+       (:title needed-chapter)
+       (:id needed-work)
+       (:body needed-page)
+       (:title needed-work)))))
 
 
 (defn retrieve-work [work-id page]
