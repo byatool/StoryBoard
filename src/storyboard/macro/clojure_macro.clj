@@ -1,26 +1,38 @@
 (ns storyboard.macro.clojure-macro)
 
-;;(macroexpand '(t-> filter #(= 1 (:id %))))
-;; (defmacro t-t[& items]
-;;   `((partial ~@items)))
 
 
 
+;; (defmacro t-t [start & items]
+;;   `(
+;;     ~start
+;;     ~@(map #(cons (cons 'partial %) '()) items )))
 
 
 
-(defmacro t-t [start & items]
+(defmacro t-t [& items]
   `(
-    ~start
-    ~@(map #(cons (cons 'partial %) '()) items )))
+     ~@(map #(cons (cons 'partial %) '()) items )))
+
+(macroexpand
+ '(->
+   [1 2 3]
+   (t-t
+    (apply +)
+    (apply -))))
+(macroexpand
+ '(->
+   [1 2 3]
+   ((partial apply +))))
+
 
 
 
 (macroexpand
  '(t-t
-   [1 2 3]
    (apply +)
-   (apply +)))
+   (apply +)
+   (filter #(= 1 %))))
 
 (t-t
  (apply +) 2)
