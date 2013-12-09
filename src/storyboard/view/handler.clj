@@ -4,7 +4,9 @@
         [hiccup.middleware :only (wrap-base-url)]
         [clojure.string :only (blank? join)]
         [storyboard.macro.compojure-macro :only (|-|)]
+        [storyboard.view.work :only (adjust-work-title)]
         [storyboard.view.chapter :only (adjust-chapter-title)]
+        [storyboard.view.page :only (adjust-page-body)]
         storyboard.view.read)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
@@ -15,12 +17,23 @@
   (GET "/:workId" [workId] (read-work workId))
   (|-| retrieveWork ?workId ?page
        (retrieve-work (Integer. workId) (Integer. page)))
-  (|-| updateChapterTitle ?text ?itemId
+   (|-| updateChapterTitle ?text ?itemId
        (do
          (adjust-chapter-title (Integer. itemId) text)
          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
-  (route/resources "/")
-  (route/not-found "Not Found"))
+   (|-| updatePageBody ?text ?itemId
+        (do
+          (adjust-page-body (Integer. itemId) text)
+          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+   (|-| updateWorkTitle ?text ?itemId
+       (do
+         (adjust-work-title (Integer. itemId) text)
+         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+   
+   
+   
+   (route/resources "/")
+   (route/not-found "Not Found"))
 
 
 (def app

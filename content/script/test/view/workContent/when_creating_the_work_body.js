@@ -69,12 +69,12 @@ src.test.view.workContentRow.whenCreatingTheWorkBody.describe = function () {
   
   it('should create the work body editable div.', function() {
     var methodWasCalled = false;
-    var workId = goog.string.getRandomString();
+    var pageId = goog.string.getRandomString();
     var workBodyUrl = goog.string.getRandomString();
     var workBodyText = goog.string.getRandomString();
     
     currentItem_[Constant_.ParameterWorkBody] = workBodyText;
-    currentItem_[Constant_.ParameterWorkId] = workId;
+    currentItem_[Constant_.ParameterPageId] = pageId;
     options_[Constant_.WorkBodyUrl] = workBodyUrl;
     
     initializeEditableDiv_ = function(name, text, id, url){
@@ -85,7 +85,7 @@ src.test.view.workContentRow.whenCreatingTheWorkBody.describe = function () {
          Constant_.WorkBodyUrl !== undefined &&
          name === Constant_.WorkBodyTextContainerId &&
          text === workBodyText &&
-         id === workId &&
+         id === pageId &&
          url === workBodyUrl);
     };
     

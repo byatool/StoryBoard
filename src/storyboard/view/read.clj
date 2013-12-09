@@ -5,10 +5,9 @@
    [storyboard.utility.web-utility :only (append-return resolve-next-page resolve-previous-page)]
    [storyboard.data.fake :only (authors works chapters pages)]
    [storyboard.view.default :only (master-page)]
-   [storyboard.macro.clojure-macro :only (t-t)]
    clojure.tools.trace ))
 
-(defrecord workPageResponse [authorName chapterId chapterTitle workId workBody workTitle])
+(defrecord workPageResponse [authorName chapterId chapterTitle workId workBody workTitle pageId])
 (def items-per-page 1)
 
 
@@ -18,8 +17,8 @@
                      "  '1', "
                      "  'retrieveWork/', "
                      "  'updateChapterTitle/', "
-                     "  '', "
-                     "  '', "
+                     "  'updateWorkTitle/', "
+                     "  'updatePageBody/', "
                      "  'workContainer' "
                      " );"
                      " "
@@ -30,27 +29,6 @@
       [:div {:id "mainContainer"}]
       [:script
        script-text]])))
-
-
-(macroexpand-1
- '(t-t
-   works
-   (filter #(= 1 (:id %)))))
-
-(macroexpand
- '(->
-   works
-   ((clojure.core/partial filter #(= 1 (:id %))))))
-
-(macroexpand '((clojure.core/partial filter #(= 1 (:id %)))))
-(macroexpand-1 '(t-t filter #(= 1 (:id %))))
-(->
- works
- ((clojure.core/partial filter #(= 1 (:id %)))))
-
-(->
- works
- (t-t filter #(= 1 (:id %))))
 
 
 (defn retrieve-work-page [work-id page]
@@ -67,7 +45,8 @@
        (:title needed-chapter)
        (:id needed-work)
        (:body needed-page)
-       (:title needed-work)))))
+       (:title needed-work)
+       (:id needed-page)))))
 
 
 (defn retrieve-work [work-id page]

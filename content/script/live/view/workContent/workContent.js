@@ -58,7 +58,7 @@ src.site.view.workContentRow.createTheRowBody =
     
     var bodyText = initializeEditableDiv(Constant_.WorkBodyTextContainerId,
                                          currentItem[Constant_.ParameterWorkBody],
-                                         currentItem[Constant_.ParameterWorkId],
+                                         currentItem[Constant_.ParameterPageId],
                                          options[Constant_.WorkBodyUrl]);
     
     appendChild(bodyContainer, bodyText);
@@ -110,7 +110,7 @@ src.site.view.workContentRow.createTheRowHeader =
     appendChild(header, workTitleHolder);
     
     
-
+    
     var authorNameHolder = Current_.createAnEmptyDiv_(Constant_.AuthorNameContainer,
                                                       Constant_.AuthorNameContainer,
                                                       createADiv);

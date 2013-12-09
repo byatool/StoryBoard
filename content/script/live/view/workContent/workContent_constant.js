@@ -60,6 +60,14 @@ src.site.view.workContentRow.constant.ParameterChapterTitle = 'chapterTitle';
  @type {string}
  @protected
  */
+src.site.view.workContentRow.constant.ParameterPageId = 'pageId';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
 src.site.view.workContentRow.constant.ParameterWorkBody = 'workBody';
 
 
