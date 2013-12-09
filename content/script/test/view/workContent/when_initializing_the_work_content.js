@@ -1,6 +1,7 @@
 goog.require('goog.string');
 goog.require('src.base.control.controlConstant');
 goog.require('src.base.control.editableDiv');
+goog.require('src.base.helper.domCreation');
 goog.require('src.site.view.workContentRow');
 
 
@@ -98,12 +99,13 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
     
     createTheRowHeader_ = function(currentItem, options, createADiv,
                                    initializeEditableDiv, setTextContent,
-                                   appendChild){
+                                   createAClearDiv, appendChild){
       methodWasCalled = currentItem === currentItem_ &&
         options === options_ &&
         createADiv === createADiv_ &&
         initializeEditableDiv === src.base.control.editableDiv.initialize &&
         setTextContent === goog.dom.setTextContent &&
+        createAClearDiv === src.base.helper.domCreation.createAClearDiv &&
         appendChild === appendChild_;
     };
     

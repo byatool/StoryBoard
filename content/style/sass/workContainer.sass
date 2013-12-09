@@ -1,0 +1,78 @@
+.workContainer
+  
+  .gridBuilderRowContainer
+    
+    
+    .gridBuilderRowClass
+  
+  
+      .workContentRowHeader
+        width: 50em
+          
+        .chapterTitle
+          float : left
+        
+          .textContainer
+            margin: 0 0 0 0
+            padding: 0 0 0 0
+            width: 8em
+              
+          .textUpdateForm
+            width: 8em
+            .editTextArea
+              width : 8em
+              height : 3em
+  
+  
+        .workTitleContainer
+          float : right
+          width : 8em
+    
+          .textContainer
+            margin: 0 0 0 0
+            padding: 0 0 0 0
+            width: 8em
+              
+          .textUpdateForm
+          
+            .editTextArea
+              width : 8em
+              height : 3em
+                
+        .authorNameContainer
+          float : right
+          
+      .workContentBody
+        
+        .workBodyTextContainer
+                
+          .editTextArea
+            height: 20em
+            width : 22em
+        
+        
+    
+      .error
+        @include defaultBorder
+        background-color   : $errorRed
+        color              : $white
+        font-size          : large
+        padding            : .4em .4em 0 .4em
+        width : 100%
+          
+      .info
+        @include defaultBorder
+        background-color   : #285f3a
+        color              : $white
+        font-size          : large
+        padding            : .4em .4em 0 .4em
+          
+          
+      .submitButton
+        @include defaultButton
+        width : 2em
+          
+      .updateFormCancel
+        @include defaultButton
+        margin : 0 0 0 .2em
+        width : 2em

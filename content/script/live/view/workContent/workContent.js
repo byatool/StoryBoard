@@ -2,6 +2,7 @@ goog.require('goog.dom');
 goog.require('src.base.control.controlConstant');
 goog.require('src.base.control.editableDiv');
 goog.require('src.base.helper.domCreation');
+goog.require('src.base.helper.domCreation');
 goog.require('src.site.view.workContentRow.constant');
 
 
@@ -77,6 +78,8 @@ src.site.view.workContentRow.createTheRowBody =
  to create editable divs.
  @param {function} setTextContent The function to set the
  author name text.
+ @param {function} createAClearDiv The function used to 
+ create an ending clear div.
  @param {function} appendChild The function used to add
  the elements to the header.
  @return {Object} The created header.
@@ -84,8 +87,8 @@ src.site.view.workContentRow.createTheRowBody =
  */
 src.site.view.workContentRow.createTheRowHeader =
   function(currentItem, options, createADiv,
-           initializeEditableDiv, setTextContent, 
-           appendChild) {
+           initializeEditableDiv, setTextContent,
+           createAClearDiv, appendChild) {
     
     var Constant_ = src.site.view.workContentRow.constant;
     var Current_ = src.site.view.workContentRow;
@@ -116,9 +119,10 @@ src.site.view.workContentRow.createTheRowHeader =
                                                       createADiv);
     setTextContent(authorNameHolder,
                    currentItem[Constant_.ParameterAuthorName]);
-
+    
     appendChild(header, authorNameHolder);
-
+    appendChild(header, createAClearDiv());
+    
     return header;
   };
 
@@ -178,6 +182,7 @@ src.site.view.workContentRow.create =
                                     createADiv,
                                     src.base.control.editableDiv.initialize,
                                     goog.dom.setTextContent,
+                                    src.base.helper.domCreation.createAClearDiv,
                                     appendChild);
 
     appendChild(row, header);

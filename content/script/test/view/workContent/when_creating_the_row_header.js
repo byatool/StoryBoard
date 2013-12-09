@@ -19,6 +19,7 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
   //Fields
   
   var appendChild_;
+  var createAClearDiv_;
   var createADiv_;
   var currentItem_;
   var initializeEditableDiv_;
@@ -34,6 +35,7 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     workContentRowHeader_ = {};
     
     appendChild_ = function(){ };
+    createAClearDiv_ = function(){};
     createADiv_ = function(){ return workContentRowHeader_; };
     initializeEditableDiv_ = function(){};
     setTextContent_ = function(){};
@@ -46,7 +48,7 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
   var callTheMethod_ = function() {
     return Current_.createTheRowHeader(currentItem_, options_, createADiv_,
                                        initializeEditableDiv_, setTextContent_,
-                                       appendChild_);
+                                       createAClearDiv_, appendChild_);
   };
   
   //Test Methods
@@ -181,7 +183,7 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
-
+  
   it('should set the text of the author name container.', function() {
     var methodWasCalled = false;
     var authorName = goog.string.getRandomString();
@@ -227,6 +229,27 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
+
+
+  
+  it('should append the clear div to the parent.', function() {
+    var methodWasCalled = false;
+    var clearDiv = {};
+
+    createAClearDiv_ = function(){
+      return clearDiv;
+    };
+ 
+    appendChild_ = function(parent, child){
+      methodWasCalled = methodWasCalled || 
+        (parent === workContentRowHeader_ && child === clearDiv);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
   
   
   it('should return the created header row.', function() {
