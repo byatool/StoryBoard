@@ -10,28 +10,28 @@
 .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader {
   width: 50em; }
   .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle {
-    float: left; }
+    float: left;
+    margin: 0 1em 0 0;
+    width: 15em; }
     .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textContainer {
-      margin: 0 0 0 0;
-      padding: 0 0 0 0;
-      width: 8em; }
+      width: 100%; }
     .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm {
-      width: 8em; }
+      margin: 0 0 0 0;
+      padding: 0 0 0 0; }
       .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm .editTextArea {
-        width: 8em;
-        height: 3em; }
+        height: 3em;
+        width: 100%; }
   .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .workTitleContainer {
-    float: right;
-    width: 8em; }
+    float: left; }
     .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .workTitleContainer .textContainer {
+      height: 3em;
       margin: 0 0 0 0;
       padding: 0 0 0 0;
       width: 8em; }
     .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .workTitleContainer .textUpdateForm .editTextArea {
-      width: 8em;
       height: 3em; }
   .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .authorNameContainer {
-    float: right; }
+    float: left; }
 .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer .editTextArea {
   height: 20em;
   width: 22em; }

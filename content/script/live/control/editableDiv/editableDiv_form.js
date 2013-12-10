@@ -1,3 +1,4 @@
+goog.require('goog.dom.forms');
 goog.require('src.base.control.controlConstant');
 goog.require('src.base.control.editableDiv.constant');
 goog.require('src.base.control.formComponent.constant');
@@ -167,17 +168,19 @@ src.base.control.editableDiv.form.setCancelHandler =
  @param {string} id The id to post with the text.
  @param {string} postTo The url to post the form values
  to.
- @param {function} createAForm The function used to
+ @param {?function} createAForm The function used to
  create the form.
- @param {function} createATextArea The function used to
+ @param {?function} createATextArea The function used to
  create the edit text area.
- @param {function} createAHidden The function used to
+ @param {?function} createAHidden The function used to
  create the id hodler.
- @param {function} createAButton The function used to
+ @param {?function} createAButton The function used to
  create the update button.
- @param {function} setValue The function used to set
+ @param {?function} createADiv The function uses to 
+ created the button container.
+ @param {?function} setValue The function used to set
  the value of the textarea to the passed in text.
- @param {function} appendChild The function used to
+ @param {?function} appendChild The function used to
  add the child elements to the created form.
  createAButton
  @return {Object} The created control, and its options.
@@ -185,12 +188,46 @@ src.base.control.editableDiv.form.setCancelHandler =
  */
 src.base.control.editableDiv.form.createTheForm =
   function(formId, text, id, postTo, createAForm, createATextArea,
-           createAHidden, createAButton, setValue, appendChild) {
+           createAHidden, createAButton, createADiv,
+           setValue, appendChild) {
+    
+    createAForm = createAForm ?
+      createAForm :
+      src.base.helper.domCreation.form;
+    
+    createATextArea = createATextArea ?
+      createATextArea :
+      src.base.helper.domCreation.textarea;
+    
+    createAHidden = createAHidden ?
+      createAHidden :
+      src.base.helper.domCreation.hidden;
+    
+    createAButton = createAButton ?
+      createAButton :
+      src.base.helper.domCreation.button;
+    
+    createADiv = createADiv ?
+      createADiv :
+      src.base.helper.domCreation.div;
+    
+    setValue = setValue ?
+      setValue :
+      goog.dom.forms.setValue;
+     
+    appendChild = appendChild ?
+      appendChild :
+      goog.dom.appendChild;
+    
     
     var Constant_ = src.base.control.editableDiv.constant;
     var ControlConstant_ = src.base.control.controlConstant;
     var Current_ = src.base.control.editableDiv.form;
     var FormComponentConstant_ = src.base.control.formComponent.constant;
+    
+    
+    
+    
     
     var form = Current_.createTheForm_(postTo, createAForm);
     
@@ -200,18 +237,23 @@ src.base.control.editableDiv.form.createTheForm =
                                           setValue,
                                           appendChild);
     
-    Current_.createAndAppendButton_(form,
+    var buttonContainerAttributes = {};
+    buttonContainerAttributes[ControlConstant_.Class] = Constant_.ButtonContainer;
+    var buttonContainer = createADiv(buttonContainerAttributes);
+    
+    Current_.createAndAppendButton_(buttonContainer,
                                     FormComponentConstant_.ButtonClass,
                                     Constant_.ButtonSubmitText,
                                     createAButton,
                                     appendChild);
     
-    Current_.createAndAppendButton_(form,
+    Current_.createAndAppendButton_(buttonContainer,
                                     Constant_.ButtonCancel,
                                     Constant_.ButtonCancelText,
                                     createAButton,
                                     appendChild);
     
+    appendChild(form, buttonContainer);
     
     Current_.createAndAppendTheHidden_(form,
                                        id,
