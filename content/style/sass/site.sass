@@ -30,10 +30,8 @@ $greyFive           : #414141
 $defaultBorderWidth : .1em
 
 @mixin defaultButton
-  background-color  : $greyThree
-  border-color      : $greyFive
-  border-style      : solid
-  border-width      : .2em
+  @include defaultBorder
+  background-color  : $greyFive
   color             : $almostWhite
   font-size         : 1em
   padding           : 0 .1em .1em .1em
@@ -43,7 +41,7 @@ $defaultBorderWidth : .1em
     
     
 @mixin defaultBorder
-  border-color      : $darkGrey
+  border-color      : $blueFour
   border-radius     : 5px
   border-style      : solid
   border-width      : $defaultBorderWidth

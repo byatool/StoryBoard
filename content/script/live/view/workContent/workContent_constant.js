@@ -37,6 +37,22 @@ src.site.view.workContentRow.constant.ChapterTitleUrl = 'updateChapterUrl';
  @type {string}
  @protected
  */
+src.site.view.workContentRow.constant.PageNumber  = 'pageNumber';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContentRow.constant.PageNumberContainer  = 'pageNumberContainer';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
 src.site.view.workContentRow.constant.ParameterAuthorName = 'authorName';
 
 

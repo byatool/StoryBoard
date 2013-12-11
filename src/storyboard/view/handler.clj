@@ -17,15 +17,15 @@
   (GET "/:workId" [workId] (read-work workId))
   (|-| retrieveWork ?workId ?page
        (retrieve-work (Integer. workId) (Integer. page)))
-   (|-| updateChapterTitle ?text ?itemId
+  (|-| updateChapterTitle ?text ?itemId
        (do
          (adjust-chapter-title (Integer. itemId) text)
          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
-   (|-| updatePageBody ?text ?itemId
-        (do
-          (adjust-page-body (Integer. itemId) text)
-          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
-   (|-| updateWorkTitle ?text ?itemId
+  (|-| updatePageBody ?text ?itemId
+       (do
+         (adjust-page-body (Integer. itemId) text)
+         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+  (|-| updateWorkTitle ?text ?itemId
        (do
          (adjust-work-title (Integer. itemId) text)
          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))

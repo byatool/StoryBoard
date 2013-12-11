@@ -18,11 +18,14 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
   
   //Fields
   
+  var PageNumber_ = goog.string.getRandomString();
+  
   var appendChild_;
   var createAClearDiv_;
   var createADiv_;
   var currentItem_;
   var initializeEditableDiv_;
+  var pageNumberContainer_;
   var options_;
   var setTextContent_;
   var workContentRowHeader_;
@@ -31,15 +34,24 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
   
   beforeEach(function() {
     currentItem_ = {};
+    currentItem_[Constant_.PageNumber] = PageNumber_;
     options_ = {};
+    pageNumberContainer_ = {};
     workContentRowHeader_ = {};
+    
+    createADiv_ = function(attributes) {
+      if(attributes[ControlConstant_.Class] === Constant_.PageNumberContainer) {
+        return pageNumberContainer_;
+      }
+      else{
+        return workContentRowHeader_; 
+      }
+    };
     
     appendChild_ = function(){ };
     createAClearDiv_ = function(){};
-    createADiv_ = function(){ return workContentRowHeader_; };
     initializeEditableDiv_ = function(){};
     setTextContent_ = function(){};
-    
   });
   
   
@@ -50,10 +62,10 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
                                        initializeEditableDiv_, setTextContent_,
                                        createAClearDiv_, appendChild_);
   };
+
   
   //Test Methods
-  
-  
+   
   it('should create the row header.', function() {
     var methodWasCalled = false;
     
@@ -97,6 +109,37 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
+
+
+  it('should create the page number holder.', function() {
+    var methodWasCalled = false;
+    
+    createADiv_ = function(attributes){
+      methodWasCalled = methodWasCalled ||
+        (Constant_.PageNumberContainer !== undefined &&
+         attributes[ControlConstant_.Class] === Constant_.PageNumberContainer);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
+  
+  it('should set the text of the page number container.', function() {
+    var methodWasCalled = false;
+    
+    setTextContent_ = function(element, text){
+      methodWasCalled = methodWasCalled ||
+        (Constant_.PageNumber !== undefined && 
+         element === pageNumberContainer_ &&
+         text === PageNumber_);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
   
   
   it('should append the chapter title div to the header.', function() {
@@ -118,118 +161,22 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
-  
-  
-  it('should create the work title editable div.', function() {
-    var methodWasCalled = false;
-    var workId = goog.string.getRandomString();
-    var workTitleUrl = goog.string.getRandomString();
-    var workTitleText = goog.string.getRandomString();
-    
-    currentItem_[Constant_.ParameterWorkTitle] = workTitleText;
-    currentItem_[Constant_.ParameterWorkId] = workId;
-    options_[Constant_.WorkTitleUrl] = workTitleUrl;
-    
-    initializeEditableDiv_ = function(name, text, id, url){
-      methodWasCalled = methodWasCalled ||
-        (Constant_.WorkTitleContainerId !== undefined &&
-         Constant_.ParameterWorkId !== undefined &&
-         Constant_.ParameterWorkTitle !== undefined &&
-         Constant_.WorkTitleUrl !== undefined &&
-         name === Constant_.WorkTitleContainerId &&
-         text === workTitleText &&
-         id === workId &&
-         url === workTitleUrl);
-    };
-    
-    callTheMethod_();
-    
-    expect(methodWasCalled).toBe(true);
-  });
-  
-  
-  it('should append the work title holder to the parent.', function() {
-    var methodWasCalled = false;
-    var workTitleHolder = {};
-    
-    initializeEditableDiv_ = function(name) {
-      return name === Constant_.WorkTitleContainerId ?
-        workTitleHolder :
-        {};
-    };
-    
-    appendChild_ = function(parent, child){
-      methodWasCalled = methodWasCalled || 
-        (parent === workContentRowHeader_ && child === workTitleHolder);
-    };
-    
-    callTheMethod_();
-    
-    expect(methodWasCalled).toBe(true);
-  });
-  
-  
-  it('should create the author name holder.', function() {
-    var methodWasCalled = false;
-    
-    createADiv_ = function(attributes){
-      methodWasCalled = methodWasCalled ||
-        (Constant_.AuthorNameContainer !== undefined &&
-         attributes[ControlConstant_.Id] === Constant_.AuthorNameContainer &&
-         attributes[ControlConstant_.Class] === Constant_.AuthorNameContainer);
-    };
-    
-    callTheMethod_();
-    
-    expect(methodWasCalled).toBe(true);
-  });
-  
-  it('should set the text of the author name container.', function() {
-    var methodWasCalled = false;
-    var authorName = goog.string.getRandomString();
-    var authorNameHolder = {};
-    
-    createADiv_ = function(attributes) {
-      return attributes[ControlConstant_.Id] === Constant_.AuthorNameContainer ?
-        authorNameHolder :
-        workContentRowHeader_;
-    };
-    
-    currentItem_[Constant_.ParameterAuthorName] = authorName;
-    
-    setTextContent_ = function(element, text){
-      methodWasCalled = methodWasCalled ||
-        (element === authorNameHolder &&
-         Constant_.ParameterAuthorName !== undefined  &&
-         text === currentItem_[Constant_.ParameterAuthorName]);
-    };
-    
-    callTheMethod_();
-    
-    expect(methodWasCalled).toBe(true);
-  });
-  
-  
-  it('should append the author name holder to the parent.', function() {
-    var methodWasCalled = false;
-    var authorNameHolder = {};
-    
-    createADiv_ = function(attributes) {
-      return attributes[ControlConstant_.Id] === Constant_.AuthorNameContainer ?
-        authorNameHolder :
-        workContentRowHeader_;
-    };
-    
-    appendChild_ = function(parent, child){
-      methodWasCalled = methodWasCalled || 
-        (parent === workContentRowHeader_ && child === authorNameHolder);
-    };
-    
-    callTheMethod_();
-    
-    expect(methodWasCalled).toBe(true);
-  });
 
+
+  
+  it('should append the page number holder to the parent.', function() {
+    var methodWasCalled = false;
+    
+    appendChild_ = function(parent, child){
+      methodWasCalled = methodWasCalled || 
+        (parent === workContentRowHeader_ && child === pageNumberContainer_);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
 
   
   it('should append the clear div to the parent.', function() {

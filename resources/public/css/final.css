@@ -8,35 +8,38 @@
   float: right; }
 
 .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader {
+  background-color: #5d5d5d;
+  padding: 0.3em 0.3em 0.3em 0.3em;
   width: 50em; }
   .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle {
     float: left;
-    margin: 0 1em 0 0;
-    width: 15em; }
+    width: 20em; }
     .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textContainer {
-      width: 100%; }
+      color: #dfdfdf;
+      font-size: 1.5em;
+      margin: 0 0 0 0; }
     .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm {
       margin: 0 0 0 0;
       padding: 0 0 0 0; }
       .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm .editTextArea {
-        height: 3em;
+        border-color: #009ac4;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 0.1em;
+        height: 1.5em;
         width: 100%; }
-  .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .workTitleContainer {
-    float: left; }
-    .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .workTitleContainer .textContainer {
-      height: 3em;
-      margin: 0 0 0 0;
-      padding: 0 0 0 0;
-      width: 8em; }
-    .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .workTitleContainer .textUpdateForm .editTextArea {
-      height: 3em; }
-  .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .authorNameContainer {
-    float: left; }
-.workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer .editTextArea {
-  height: 20em;
-  width: 22em; }
+  .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .pageNumberContainer {
+    color: #dfdfdf;
+    font-size: 1.5em;
+    float: right;
+    margin: 0 1em 0 0; }
+.workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody {
+  margin: 0.8em 0 0 0; }
+  .workContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer .editTextArea {
+    height: 20em;
+    width: 22em; }
 .workContainer .gridBuilderRowContainer .gridBuilderRowClass .error {
-  border-color: #444444;
+  border-color: #009ac4;
   border-radius: 5px;
   border-style: solid;
   border-width: 0.1em;
@@ -46,7 +49,7 @@
   padding: 0.4em 0.4em 0 0.4em;
   width: 100%; }
 .workContainer .gridBuilderRowContainer .gridBuilderRowClass .info {
-  border-color: #444444;
+  border-color: #009ac4;
   border-radius: 5px;
   border-style: solid;
   border-width: 0.1em;
@@ -55,10 +58,11 @@
   font-size: large;
   padding: 0.4em 0.4em 0 0.4em; }
 .workContainer .gridBuilderRowContainer .gridBuilderRowClass .submitButton {
-  background-color: #5d5d5d;
-  border-color: #414141;
+  border-color: #009ac4;
+  border-radius: 5px;
   border-style: solid;
-  border-width: 0.2em;
+  border-width: 0.1em;
+  background-color: #414141;
   color: #dfdfdf;
   font-size: 1em;
   padding: 0 0.1em 0.1em 0.1em;
@@ -67,10 +71,11 @@
     background-color: #dfdfdf !important;
     color: #414141; }
 .workContainer .gridBuilderRowContainer .gridBuilderRowClass .updateFormCancel {
-  background-color: #5d5d5d;
-  border-color: #414141;
+  border-color: #009ac4;
+  border-radius: 5px;
   border-style: solid;
-  border-width: 0.2em;
+  border-width: 0.1em;
+  background-color: #414141;
   color: #dfdfdf;
   font-size: 1em;
   padding: 0 0.1em 0.1em 0.1em;

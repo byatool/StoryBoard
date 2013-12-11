@@ -1,80 +1,82 @@
+@mixin textboxContainer
+  color                  : $almostWhite
+  font-size              : 1.4em
+  height                 : 3em
+  margin                 : 0 0 0 0
+  padding                : .3em .3em .3em .3em
+  width                  : 8em
+
+@mixin textContainer
+  color        : $almostWhite
+  font-size    : 1.5em
+    
+
+
 .workContainer
-  
+
   .gridBuilderRowContainer
     
     
     .gridBuilderRowClass
-  
+
   
       .workContentRowHeader
-        width : 50em
-          
+        background-color : $greyThree
+        padding          : .3em .3em .3em .3em
+        width            : 50em
+  
         .chapterTitle
-          float : left
-          margin: 0 1em 0 0
-          width : 15em
+          float          : left
+          width          : 20em
           
-    
           .textContainer
-            width: 100%
-      
-          .textUpdateForm
+            @include textContainer
             margin : 0 0 0 0
-            padding : 0 0 0 0
-  
-            .editTextArea
-              height : 3em
-              width : 100%
-    
-    
-        .workTitleContainer
-          float : left
-            
-          .textContainer
-            height : 3em
-            margin: 0 0 0 0
-            padding: 0 0 0 0
-            width: 8em
-  
           .textUpdateForm
+            margin       : 0 0 0 0
+            padding      : 0 0 0 0
             
             .editTextArea
-              height : 3em
-    
-        .authorNameContainer
-          float : left
-  
+              @include defaultBorder
+              height     : 1.5em
+              width      : 100%
+        
+        .pageNumberContainer
+          @include textContainer
+          float : right
+          margin : 0 1em 0 0
+      
       .workContentBody
+        margin           : .8em 0 0 0
 
         .workBodyTextContainer
-        
+
           .editTextArea
-            height: 20em
-            width: 22em
+            height       : 20em
+            width        : 22em
         
-        
-    
       .error
         @include defaultBorder
-        background-color   : $errorRed
-        color              : $white
-        font-size          : large
-        padding            : .4em .4em 0 .4em
-        width : 100%
-          
+        background-color : $errorRed
+        color            : $white
+        font-size        : large
+        padding          : .4em .4em 0 .4em
+        width            : 100%
+        
       .info
         @include defaultBorder
-        background-color   : #285f3a
-        color              : $white
-        font-size          : large
-        padding            : .4em .4em 0 .4em
-          
-          
+        background-color : #285f3a
+        color            : $white
+        font-size        : large
+        padding          : .4em .4em 0 .4em
+      
+      
       .submitButton
         @include defaultButton
-        width : 2em
+        width            : 2em
           
       .updateFormCancel
         @include defaultButton
-        margin : 0 0 0 .2em
-        width : 2em
+        margin           : 0 0 0 .2em
+        width            : 2em
+          

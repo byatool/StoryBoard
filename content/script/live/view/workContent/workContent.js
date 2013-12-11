@@ -103,31 +103,18 @@ src.site.view.workContentRow.createTheRowHeader =
                                                    currentItem[Constant_.ParameterChapterId],
                                                    options[Constant_.ChapterTitleUrl]);
     
-    appendChild(header, chapterTitleHolder);
-    
-    var workTitleHolder = initializeEditableDiv(Constant_.WorkTitleContainerId,
-                                                currentItem[Constant_.ParameterWorkTitle],
-                                                currentItem[Constant_.ParameterWorkId],
-                                                options[Constant_.WorkTitleUrl]);
-    
-    appendChild(header, workTitleHolder);
-    
-    
-    
-    var authorNameHolder = Current_.createAnEmptyDiv_(Constant_.AuthorNameContainer,
-                                                      Constant_.AuthorNameContainer,
+    var pageNumberHolder = Current_.createAnEmptyDiv_(Constant_.PageNumberContainer,
+                                                      Constant_.PageNumberContainer,
                                                       createADiv);
-    setTextContent(authorNameHolder,
-                   currentItem[Constant_.ParameterAuthorName]);
     
-    appendChild(header, authorNameHolder);
+    setTextContent(pageNumberHolder, currentItem[Constant_.PageNumber]);
+    
+    appendChild(header, chapterTitleHolder);
+    appendChild(header, pageNumberHolder);
     appendChild(header, createAClearDiv());
     
     return header;
   };
-
-
-
 
 
 /**

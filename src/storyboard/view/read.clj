@@ -7,7 +7,7 @@
    [storyboard.view.default :only (master-page)]
    clojure.tools.trace ))
 
-(defrecord workPageResponse [authorName chapterId chapterTitle workId workBody workTitle pageId])
+(defrecord workPageResponse [chapterId chapterTitle pageId workBody pageNumber])
 (def items-per-page 1)
 
 
@@ -39,14 +39,14 @@
                            (filter #(= work-id (:id (:work (:chapter %)))) pages)))]
     (let [needed-chapter (first
                           (filter #(= (:id %) (:id (:chapter needed-page))) chapters))]
-      (workPageResponse.
-       (:name (:author needed-work))
-       (:id needed-chapter)
-       (:title needed-chapter)
-       (:id needed-work)
-       (:body needed-page)
-       (:title needed-work)
-       (:id needed-page)))))
+      (do
+        (trace page)
+        (workPageResponse.
+         (:id needed-chapter)
+         (:title needed-chapter)
+         (:id needed-page)
+         (:body needed-page)
+         page)))))
 
 
 (defn retrieve-work [work-id page]
