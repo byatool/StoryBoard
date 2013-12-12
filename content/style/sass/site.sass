@@ -31,7 +31,7 @@ $defaultBorderWidth : .1em
 
 @mixin defaultButton
   @include defaultBorder
-  background-color  : $greyFive
+  background-color  : $blueFive
   color             : $almostWhite
   font-size         : 1em
   padding           : 0 .1em .1em .1em
@@ -40,17 +40,39 @@ $defaultBorderWidth : .1em
     color: $greyFive
     
     
+@mixin pagerButton
+  @include defaultButton
+  float              : left
+  font-weight        : bold
+  margin : 0 .2em 0 0
+  padding            : .5em .5em .5em .5em !important
+  width              : 2em
+
+    
 @mixin defaultBorder
-  border-color      : $blueFour
+  border-color      : $greyFour
   border-radius     : 5px
   border-style      : solid
   border-width      : $defaultBorderWidth
-    
+
+
+@mixin messageDisplay($color)
+  @include defaultBorder
+  background-color   : $color
+  color              : $white
+  font-size          : large
+  padding            : .4em .4em 0 .4em
+  
+
 .clearBoth
   clear             : both
-
+  
 .floatLeft 
   float             : left 
 
 .floatRight 
   float             : right
+  
+
+pre
+  white-space: pre-wrap

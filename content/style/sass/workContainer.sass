@@ -1,82 +1,103 @@
 @mixin textboxContainer
-  color                  : $almostWhite
-  font-size              : 1.4em
-  height                 : 3em
-  margin                 : 0 0 0 0
-  padding                : .3em .3em .3em .3em
-  width                  : 8em
-
+  color                    : $almostWhite
+  font-size                : 1.4em
+  height                   : 3em
+  margin                   : 0 0 0 0
+  padding                  : .3em .3em .3em .3em
+  width                    : 8em
+    
 @mixin textContainer
-  color        : $almostWhite
-  font-size    : 1.5em
+  color                    : $almostWhite
+  margin                   : 0 0 0 0
+
+@mixin contentSection($radius)
+  background-color         : $greyThree
+  border-color             : $greyThree
+  border-radius            : $radius
+  border-style             : solid
+  border-width             : .1em
+  padding                  : .3em .3em .3em .3em
+  width                    : 50em
     
 
-
 .workContainer
-
+  
+  
   .gridBuilderRowContainer
     
     
     .gridBuilderRowClass
-
+  
   
       .workContentRowHeader
-        background-color : $greyThree
-        padding          : .3em .3em .3em .3em
-        width            : 50em
-  
+        @include contentSection(.5em .5em 0 0)
+      
+        
         .chapterTitle
-          float          : left
-          width          : 20em
+          float            : left
+          width            : 20em
           
           .textContainer
             @include textContainer
-            margin : 0 0 0 0
-          .textUpdateForm
-            margin       : 0 0 0 0
-            padding      : 0 0 0 0
+            font-size      : 1.5em
             
+            
+          .textUpdateForm
+            margin         : 0 0 0 0
+            padding        : 0 0 0 0
+          
             .editTextArea
               @include defaultBorder
-              height     : 1.5em
-              width      : 100%
-        
+              height       : 1.5em
+              width        : 100%
+          
         .pageNumberContainer
           @include textContainer
-          float : right
-          margin : 0 1em 0 0
+          float            : right
+          margin           : 0 1em 0 0
       
       .workContentBody
-        margin           : .8em 0 0 0
-
+        @include contentSection(0 0 .5em .5em)
+        
         .workBodyTextContainer
+          background-color : $greyTwo
+          min-height       : 20em
+          padding          : .3em .3em .3em .3em
 
+          .textContainer
+            @include textContainer
+            font-size      : 1.2em
+  
           .editTextArea
-            height       : 20em
-            width        : 22em
-        
+            min-height     : 20em
+            width          : 52em
+            
       .error
-        @include defaultBorder
-        background-color : $errorRed
-        color            : $white
-        font-size        : large
-        padding          : .4em .4em 0 .4em
-        width            : 100%
-        
+        @include messageDisplay($errorRed)
+    
       .info
-        @include defaultBorder
-        background-color : #285f3a
-        color            : $white
-        font-size        : large
-        padding          : .4em .4em 0 .4em
-      
+        @include messageDisplay($greenFive)
       
       .submitButton
         @include defaultButton
-        width            : 2em
+        width              : 2em
           
       .updateFormCancel
         @include defaultButton
-        margin           : 0 0 0 .2em
-        width            : 2em
+        margin             : 0 0 0 .2em
+        width              : 2em
           
+  .gridBuilderButtonRowClass
+    margin                 : .3em 0 0 0
+    padding                : 0 0 .5em 0
+  
+    .pagerEnabledClass
+      @include pagerButton
+      
+    
+    .pagerDisabledClass
+      @include pagerButton
+      background-color     : $blueFive
+      color                : $greyFive
+      &:hover
+        background-color   : $blueFive !important

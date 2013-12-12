@@ -39,14 +39,12 @@
                            (filter #(= work-id (:id (:work (:chapter %)))) pages)))]
     (let [needed-chapter (first
                           (filter #(= (:id %) (:id (:chapter needed-page))) chapters))]
-      (do
-        (trace page)
-        (workPageResponse.
-         (:id needed-chapter)
-         (:title needed-chapter)
-         (:id needed-page)
-         (:body needed-page)
-         page)))))
+      (workPageResponse.
+       (:id needed-chapter)
+       (:title needed-chapter)
+       (:id needed-page)
+       (:body needed-page)
+       (+ 1 page)))))
 
 
 (defn retrieve-work [work-id page]
