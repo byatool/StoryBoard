@@ -11,17 +11,23 @@ Nam vehicula vulputate ante eget lacinia. Maecenas mauris velit, fermentum et es
 
 Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvinar sem. Curabitur non cursus lacus. Curabitur non tristique elit. Nullam ante orci, molestie a molestie luctus, suscipit sed quam. Proin rhoncus vel urna vitae ullamcorper. Duis sed erat ut dui commodo tincidunt. Ut non tempor dolor. Ut congue nibh arcu, id varius odio vestibulum ac. Mauris eleifend arcu quis neque cursus egestas. Pellentesque quis lectus dapibus, eleifend sem id, sagittis diam. Fusce vitae laoreet risus, eu venenatis nunc. Proin tristique sem odio, nec lobortis nisi rutrum blandit. Quisque ligula metus, rutrum ac metus sit amet, cursus placerat nibh. Vivamus lacinia lacinia nibh at fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus.")
 
-(defrecord Author [id name works])
+;; Data store
+(defrecord Author [id name summary works])
 (defrecord Chapter [id title work])
 (defrecord Page [id body order chapter])
 (defrecord Work [id title author summary chapters])
+
+;; Response
+(defrecord workBasicInfoResponse [workId workTitle workSummary authorId authorSummary])
+(defrecord workPageResponse [chapterId chapterTitle pageId workBody pageNumber])
+
 
 
 (defn paragraph-part [size to-drop]
   (join (take size (drop to-drop base-paragraph))))
 
 ;; Mock database
-(def authors [(Author. 1 "sean" [])])
+(def authors [(Author. 1 "sean" "this is the summary" [])])
 (def works [(Work. 1 (paragraph-part 20 0) (first authors) (paragraph-part 20 0) [])])
 (def chapters [(Chapter. 1 "chapter 1" (first works))
                (Chapter. 2 "chapter 2" (first works))])
@@ -30,6 +36,16 @@ Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvi
 
 
 ;; MOCK database methods
+(defn retrieve-work-information-base [work-id]
+  (first
+   (map #(workBasicInfoResponse.
+          (:id %)
+          (:summary %)
+          (:title %)
+          (:name (:author %))
+          (:summary (:author %)))
+        (filter #(= work-id (:id %)) works)))) 
+
 
 (defn update-chapter-title [id text]
   (def chapters (map

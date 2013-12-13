@@ -14,6 +14,9 @@ python c:/lib/closure/closure-library/closure/bin/closurebuilder.py ^
 --namespace="src.site.validation.validateSocialSecurityNumber" ^
 --namespace="src.site.validation.validateText" ^
 --namespace="src.test.view.mainContent.whenInitializingAMainContent" ^
+--namespace="src.test.view.workInformation.whenCreatingTheSubmitHandler" ^
+--namespace="src.test.view.workInformation.whenInitializingAWorkInformation" ^
+--namespace="src.test.view.workInformation.rowItem.whenCreatingARowItem" ^
 --namespace="src.test.view.workContentRow.whenInitializingAWorkContentRow" ^
 --namespace="src.test.view.workContentRow.whenCreatingTheRowHeader" ^
 --namespace="src.test.view.workContentRow.whenCreatingTheWorkBody" ^
