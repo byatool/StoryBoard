@@ -32,3 +32,9 @@
     `(POST ~(apply str ["/" method-name "/" (convert-to-string main-parameters (empty? query-string-parameters))])
            [~@(string-to-symbol main-parameters) ~@(string-to-symbol query-string-parameters)]
            ~body)))
+
+
+(macroexpand-1 '(|-| updateChapterTitle ?text ?itemId
+                   (do
+                     (+ 1 1)
+                     (+ 2 2))))

@@ -6,6 +6,7 @@ goog.require('src.base.helper.domCreation');
 goog.require('src.base.helper.domHelper');
 goog.require('src.site.view.constant');
 goog.require('src.site.view.workInformation.constant');
+goog.require('src.site.view.workInformation.rowItem');
 
 
 goog.provide('src.site.view.workInformation');
@@ -102,11 +103,15 @@ src.site.view.workInformation.initialize =
     
     createADiv = createADiv ? 
       createADiv : 
-              src.base.helper.domCreation.div;
+      src.base.helper.domCreation.div;
+    
+    createTheSubmitHandler = createTheSubmitHandler ? 
+      createTheSubmitHandler : 
+      src.site.view.workInformation.createTheSubmitHandler;
     
     submitToGetUrl = submitToGetUrl ? 
       submitToGetUrl : 
-      src.base.helper.domHelper.submitToGetUrl;
+      src.base.helper.domHelper.submitRestfulGet;
     
     
     /* Start */
@@ -127,14 +132,12 @@ src.site.view.workInformation.initialize =
                                                authorSummaryUpdate,
                                                workTitleUpdate,
                                                workSummaryUpdate,
-                                               src.site.view.workInformation.rowItem.createARowItem,
+                                               src.site.view.workInformation.rowItem.initialize,
                                                goog.dom.appendChild);
     
-    
-    var parameters = {};
-    parameters[ViewConstant_.WorkId] = workId;
     submitToGetUrl(retrieveInformation,
-                   parameters,
+                   workId,
+                   null,
                    submitHandler);
     
     return container;

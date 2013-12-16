@@ -99,7 +99,7 @@ src.test.view.workInformation.whenInitializingAWorkInformation.describe = functi
         authorSummaryUpdate === AuthorSummaryUpdate_ &&
         workTitleUpdate === WorkTitleUpdate_ &&
         workSummaryUpdate === WorkSummaryUpdate_ &&
-        createARowItem === src.site.view.workInformation.rowItem.createARowItem &&
+        createARowItem === src.site.view.workInformation.rowItem.initialize &&
         appendChild === goog.dom.appendChild;
     };
     
@@ -118,9 +118,10 @@ src.test.view.workInformation.whenInitializingAWorkInformation.describe = functi
       return createdSubmitHandler;
     };
     
-    submitToGetUrl_ = function(url, parameters, submitHandler){
+    submitToGetUrl_ = function(url, workId, parameters, submitHandler){
       methodWasCalled = url === RetrieveInformation_ &&
-        parameters[ViewConstant_.WorkId] === WorkId_ &&
+        workId === WorkId_ &&
+        parameters === null &&
         submitHandler === createdSubmitHandler;
     };
     
@@ -134,7 +135,7 @@ src.test.view.workInformation.whenInitializingAWorkInformation.describe = functi
   });    
 };
 
-describe('When initializing a WorkInformation, it', function() {
+describe('When initializing a Work Information, it', function() {
   src.test.view.workInformation.whenInitializingAWorkInformation.describe();
 });
 

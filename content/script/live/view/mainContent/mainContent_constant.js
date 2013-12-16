@@ -15,3 +15,11 @@ src.site.view.mainContent.constant.ContainerClass = 'gridBuilderContainer';
  @protected
  */
 src.site.view.mainContent.constant.WorkContainer = 'workContainer';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.mainContent.constant.WorkInformationContainer = 'workInformationContainer';

@@ -16,7 +16,7 @@
 
 (defroutes app-routes
   
-  (GET "/workInformation" [workId]
+  (GET "/workInformation/:workId" [workId]
        (generate-string (retrieve-work-information (Integer. workId))))
   (GET "/retrieveWork/:workId" [workId page]
        (retrieve-work (Integer. workId) (Integer. page)))

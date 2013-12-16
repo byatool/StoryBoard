@@ -7,6 +7,7 @@ goog.require('src.site.view.constant');
 goog.require('src.site.view.mainContent.constant');
 goog.require('src.site.view.workContentRow');
 goog.require('src.site.view.workContentRow.constant');
+goog.require('src.site.view.workInformation');
 
 
 goog.provide('src.site.view.mainContent');
@@ -21,9 +22,21 @@ goog.provide('src.site.view.mainContent');
  work title.
  @param {string} workBodyUrl The url needed to update the
  body text.
+ @param {string} retrieveInformation The url used to retrieve
+ the book information.
+ @param {string} authorNameUpdate The url used to update the
+ author name.
+ @param {string} authorSummaryUpdate The url used to update
+ the author summary.
+ @param {string} workTitleUpdate The url used to update the
+ work title.
+ @param {string} workSummaryUpdate The url used to update the
+ work summary.
  @param {string} containerId The id for the parent container.
  @param {?function} createADiv The method used  to create a 
  div element.
+ @param {function} initializeWorkInformation The function used
+ to create the work information container.
  @param {?function} initializeTheGrid The function used to
  fill the grid.
  @param {?function} appendChild The function used to add
@@ -33,12 +46,18 @@ goog.provide('src.site.view.mainContent');
  */
 src.site.view.mainContent.initialize =
   function(workId, retrieveWorkUrl, chapterTitleUrl,
-           workTitleUrl, workBodyUrl, containerId,
-           createADiv, initializeTheGrid, appendChild) {
+           workTitleUrl, workBodyUrl, retrieveInformation,
+           authorNameUpdate, authorSummaryUpdate, workTitleUpdate,
+           workSummaryUpdate, containerId, createADiv,
+           initializeWorkInformation, initializeTheGrid, appendChild) {
     
     createADiv = createADiv ? 
       createADiv : 
       src.base.helper.domCreation.div;
+    
+    initializeWorkInformation = initializeWorkInformation ? 
+      initializeWorkInformation : 
+      src.site.view.workInformation.initialize;
     
     initializeTheGrid = initializeTheGrid ? 
       initializeTheGrid : 
@@ -63,6 +82,16 @@ src.site.view.mainContent.initialize =
     containerAttributes[ControlConstant_.Class] = Constant_.ContainerClass;
     var container = createADiv(containerAttributes);
     
+    
+    var workInformation = initializeWorkInformation(workId,
+                                                    Constant_.WorkInformationContainer,
+                                                    retrieveInformation,
+                                                    authorNameUpdate,
+                                                    authorSummaryUpdate,
+                                                    workTitleUpdate,
+                                                    workSummaryUpdate);
+    
+    
     var contentGridOptions = {};
     contentGridOptions[GridBuilderConstant_.ContainerClass] = Constant_.WorkContainer;
     contentGridOptions[GridBuilderConstant_.ContainerId] = Constant_.WorkContainer;
@@ -84,6 +113,8 @@ src.site.view.mainContent.initialize =
     contentGridOptions[GridBuilderConstant_.CreateARow] = WorkContent_.create;
     
     var gridResult = initializeTheGrid(contentGridOptions);
+
+    appendChild(container, workInformation);
     appendChild(container, gridResult[ControlConstant_.CreatedControl]);
     
     return container;

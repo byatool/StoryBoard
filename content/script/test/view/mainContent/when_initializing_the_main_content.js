@@ -17,13 +17,18 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   
   //Using
   
+  var AuthorNameUpdate_ = goog.string.getRandomString();
+  var AuthorSummaryUpdate_ = goog.string.getRandomString();
   var Constant_ = src.site.view.mainContent.constant;
   var ControlConstant_ = src.base.control.controlConstant;    
   var Current_ = src.site.view.mainContent;
   var GridBuilderConstant_ = src.base.control.gridBuilder.constant;
+  var RetrieveInformation_ = goog.string.getRandomString();
   var ViewConstant_ = src.site.view.constant;
-  var WorkContent_ = src.site.view.workContentRow;
   var WorkContentConstant_ = src.site.view.workContentRow.constant;
+  var WorkContent_ = src.site.view.workContentRow;
+  var WorkSummaryUpdate_ = goog.string.getRandomString();
+  var WorkTitleUpdate_ = goog.string.getRandomString();
   
   
   //Fields
@@ -41,6 +46,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   var grid_;
   var gridResult_;
   var initializeTheGrid_;
+  var initializeWorkInformation_;
   var options_;
   var parentContainer_;
   
@@ -57,7 +63,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
     initializeTheGrid_ = function(){
       return gridResult_;
     };
-
+    
     
     createADiv_ = function(attributes){
       switch(attributes[ControlConstant_.Class]) {
@@ -70,6 +76,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
       }};
     
     appendChild_ = function() {};
+    initializeWorkInformation_ = function(){}; 
   });
   
   
@@ -77,7 +84,9 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   
   var callTheMethod_ = function() {
     return Current_.initialize(WorkId_, RetrieveWorkUrl_, ChapterTitleUrl_, WorkTitleUrl_, WorkBodyUrl_,
-                               ContainerId_, createADiv_, initializeTheGrid_, appendChild_);
+                               RetrieveInformation_, AuthorNameUpdate_, AuthorSummaryUpdate_, WorkTitleUpdate_,
+                               WorkSummaryUpdate_, ContainerId_, createADiv_, initializeWorkInformation_,
+                               initializeTheGrid_, appendChild_);
   };
   
   
@@ -102,6 +111,48 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   
   
   
+  it('should create the work information control.', function() {
+    var methodWasCalled = false;
+    
+    initializeWorkInformation_ = function(workId, containerId, retrieveInformation, authorNameUpdate,
+                                          authorSummaryUpdate, workTitleUpdate, workSummaryUpdate){
+      
+      methodWasCalled = Constant_.WorkInformationContainer !== undefined && 
+        workId === WorkId_ &&
+        containerId === Constant_.WorkInformationContainer &&
+        retrieveInformation === RetrieveInformation_ &&
+        authorNameUpdate === AuthorNameUpdate_ &&
+        authorSummaryUpdate === AuthorSummaryUpdate_ &&
+        workTitleUpdate === WorkTitleUpdate_ &&
+        workSummaryUpdate === WorkSummaryUpdate_;
+    };
+    
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+   
+  
+  it('should append the work information to the parent.', function() {
+    var methodWasCalled = false;
+    var workInformation = {};
+    
+    initializeWorkInformation_ = function(){
+      return workInformation;
+    };
+    
+    appendChild_ = function(parent, child){
+      methodWasCalled = methodWasCalled || 
+        (parent === parentContainer_ && child === workInformation);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
+   
   it('should create a grid builder to house the work.', function() {
     var methodWasCalled = false;
     
@@ -179,7 +230,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   });    
 };
 
-describe('When refreshing AMainContent, it', function() {
+describe('When initializing a MainContent, it', function() {
   src.test.view.mainContent.whenInitializingAMainContent.describe();
 });
 

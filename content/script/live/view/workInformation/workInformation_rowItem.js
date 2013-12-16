@@ -2,7 +2,7 @@ goog.require('goog.dom');
 goog.require('src.base.control.controlConstant');
 goog.require('src.base.control.editableDiv');
 goog.require('src.base.helper.domCreation');
-goog.require('src.site.view.workInformation');
+goog.require('src.site.view.workInformation.constant');
 
 
 goog.provide('src.site.view.workInformation.rowItem');
@@ -39,15 +39,15 @@ src.site.view.workInformation.rowItem.initialize =
     createALabel = createALabel ?
       createALabel :
       src.base.helper.domCreation.label;
-     
+    
     createAnEditableDiv = createAnEditableDiv ? 
       createAnEditableDiv : 
       src.base.control.editableDiv.initialize;
-     
+    
     createADiv = createADiv ?
       createADiv :
       src.base.helper.domCreation.div;
-     
+    
     createAClearDiv = createAClearDiv ?
       createAClearDiv :
       src.base.helper.domCreation.createAClearDiv;
@@ -55,7 +55,7 @@ src.site.view.workInformation.rowItem.initialize =
     appendChild = appendChild ?
       appendChild :
       goog.dom.appendChild;
-
+    
     
     /* Start */
     
@@ -84,6 +84,6 @@ src.site.view.workInformation.rowItem.initialize =
     appendChild(containerRow, editableDiv);
     appendChild(containerRow, createAClearDiv());
     
-    return createADiv(rowAttributes);
+    return containerRow;
     
   };

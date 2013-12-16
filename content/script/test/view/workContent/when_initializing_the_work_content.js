@@ -177,7 +177,7 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
   });    
 };
 
-describe('When refreshing AWorkContent, it', function() {
+describe('When creating a WorkContent, it', function() {
   src.test.view.workContentRow.whenInitializingAWorkContentRow.describe();
 });
 
