@@ -4,8 +4,8 @@ goog.require('src.base.control.gridBuilder');
 goog.require('src.base.control.gridBuilder.constant');
 goog.require('src.site.view.constant');
 goog.require('src.site.view.mainContent');
-goog.require('src.site.view.workContentRow');
-goog.require('src.site.view.workContentRow.constant');
+goog.require('src.site.view.workContent');
+goog.require('src.site.view.workContent.constant');
 
 
 goog.provide('src.test.view.mainContent.whenInitializingAMainContent');
@@ -25,8 +25,8 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   var GridBuilderConstant_ = src.base.control.gridBuilder.constant;
   var RetrieveInformation_ = goog.string.getRandomString();
   var ViewConstant_ = src.site.view.constant;
-  var WorkContentConstant_ = src.site.view.workContentRow.constant;
-  var WorkContent_ = src.site.view.workContentRow;
+  var WorkContentConstant_ = src.site.view.workContent.constant;
+  var WorkContent_ = src.site.view.workContent;
   var WorkSummaryUpdate_ = goog.string.getRandomString();
   var WorkTitleUpdate_ = goog.string.getRandomString();
   
@@ -132,7 +132,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
-   
+  
   
   it('should append the work information to the parent.', function() {
     var methodWasCalled = false;
@@ -152,58 +152,20 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
     expect(methodWasCalled).toBe(true);
   });
   
-   
-  it('should create a grid builder to house the work.', function() {
+  
+  it('should initialize the work content grid..', function() {
     var methodWasCalled = false;
     
-    initializeTheGrid_ = function(options){
-      methodWasCalled = Constant_.WorkContainer !== undefined && 
-        options[GridBuilderConstant_.ContainerClass] === Constant_.WorkContainer &&
-        options[GridBuilderConstant_.ContainerId] === Constant_.WorkContainer &&
-        options[GridBuilderConstant_.Url] === RetrieveWorkUrl_ && 
-        options[GridBuilderConstant_.MainParameter] === WorkId_ &&
-        options[GridBuilderConstant_.Parameters][ViewConstant_.Page] === 0 &&
-        options[GridBuilderConstant_.Map][GridBuilderConstant_.HeaderText] === '' &&
-        options[GridBuilderConstant_.Map][GridBuilderConstant_.PropertyName] === '' &&
-        options[GridBuilderConstant_.Map][ControlConstant_.Class] === '';
+    initializeTheGrid_ = function(workId, retrieveWorkUrl, chapterTitleUrl, workTitleUrl, workBodyUrl){
+      methodWasCalled = workId === WorkId_ &&
+        retrieveWorkUrl === RetrieveWorkUrl_ &&
+        chapterTitleUrl === ChapterTitleUrl_ &&
+        workTitleUrl ===  WorkTitleUrl_ &&
+        workBodyUrl === WorkBodyUrl_;
       
       return grid_;
     };
-    
-    
-    callTheMethod_();
-    
-    expect(methodWasCalled).toBe(true);
-  });
-  
-  
-  it('should pass on the needed urls.', function() {
-    var methodWasCalled = false;
-    
-    initializeTheGrid_ = function(options) {
-      methodWasCalled = options[WorkContentConstant_.ChapterTitleUrl] === ChapterTitleUrl_ &&
-        options[WorkContentConstant_.WorkBodyUrl] === WorkBodyUrl_ &&
-        options[WorkContentConstant_.WorkTitleUrl] === WorkTitleUrl_;
-      
-      return grid_;
-    };
-    
-    callTheMethod_();
-    
-    expect(methodWasCalled).toBe(true);
-  });
-  
-  
-  
-  it('should pass on the correct create row function.', function() {
-    var methodWasCalled = false;
-    
-    initializeTheGrid_ = function(options) {
-      methodWasCalled = options[GridBuilderConstant_.CreateARow] === WorkContent_.create;
-      
-      return grid_;
-    };
-    
+     
     callTheMethod_();
     
     expect(methodWasCalled).toBe(true);

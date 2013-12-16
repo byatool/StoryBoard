@@ -17,9 +17,10 @@ python c:/lib/closure/closure-library/closure/bin/closurebuilder.py ^
 --namespace="src.test.view.workInformation.whenCreatingTheSubmitHandler" ^
 --namespace="src.test.view.workInformation.whenInitializingAWorkInformation" ^
 --namespace="src.test.view.workInformation.rowItem.whenCreatingARowItem" ^
---namespace="src.test.view.workContentRow.whenInitializingAWorkContentRow" ^
---namespace="src.test.view.workContentRow.whenCreatingTheRowHeader" ^
---namespace="src.test.view.workContentRow.whenCreatingTheWorkBody" ^
+--namespace="src.test.view.workContent.whenInitializingAWorkContentGrid" ^
+--namespace="src.test.view.workContent.row.whenInitializingAWorkContentRow" ^
+--namespace="src.test.view.workContent.row.whenCreatingTheRowHeader" ^
+--namespace="src.test.view.workContent.row.whenCreatingTheWorkBody" ^
 --output_mode=compiled ^
 --compiler_jar="c:/lib/closure/compiler.jar" ^
 --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS" ^

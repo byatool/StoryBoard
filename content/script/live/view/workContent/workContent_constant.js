@@ -1,11 +1,10 @@
-goog.provide('src.site.view.workContentRow.constant');
-
-
-// Constant_.WorkBodyContainerId !== undefined &&
-//   Constant_.ParameterWorkId !== undefined &&
-//   Constant_.ParameterWorkBody !== undefined &&
-//   Constant_.WorkBodyUrl !== undefined &&
-
+goog.provide('src.site.view.workContent.constant');
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContent.constant.AuthorNameContainer = 'authorNameContainer';
 
 
 /**
@@ -13,7 +12,7 @@ goog.provide('src.site.view.workContentRow.constant');
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.AuthorNameContainer = 'authorNameContainer';
+src.site.view.workContent.constant.ChapterTitleContainerId = 'chapterTitle';
 
 
 /**
@@ -21,7 +20,7 @@ src.site.view.workContentRow.constant.AuthorNameContainer = 'authorNameContainer
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ChapterTitleContainerId = 'chapterTitle';
+src.site.view.workContent.constant.ChapterTitleUrl = 'updateChapterUrl';
 
 
 /**
@@ -29,7 +28,7 @@ src.site.view.workContentRow.constant.ChapterTitleContainerId = 'chapterTitle';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ChapterTitleUrl = 'updateChapterUrl';
+src.site.view.workContent.constant.PageNumber  = 'pageNumber';
 
 
 /**
@@ -37,7 +36,7 @@ src.site.view.workContentRow.constant.ChapterTitleUrl = 'updateChapterUrl';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.PageNumber  = 'pageNumber';
+src.site.view.workContent.constant.PageNumberContainer  = 'pageNumberContainer';
 
 
 /**
@@ -45,7 +44,7 @@ src.site.view.workContentRow.constant.PageNumber  = 'pageNumber';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.PageNumberContainer  = 'pageNumberContainer';
+src.site.view.workContent.constant.ParameterAuthorName = 'authorName';
 
 
 /**
@@ -53,7 +52,14 @@ src.site.view.workContentRow.constant.PageNumberContainer  = 'pageNumberContaine
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ParameterAuthorName = 'authorName';
+src.site.view.workContent.constant.ParameterChapterId = 'chapterId';
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workContent.constant.ParameterChapterTitle = 'chapterTitle';
 
 
 /**
@@ -61,14 +67,7 @@ src.site.view.workContentRow.constant.ParameterAuthorName = 'authorName';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ParameterChapterId = 'chapterId';
-
-/**
- @const
- @type {string}
- @protected
- */
-src.site.view.workContentRow.constant.ParameterChapterTitle = 'chapterTitle';
+src.site.view.workContent.constant.ParameterPageId = 'pageId';
 
 
 /**
@@ -76,7 +75,7 @@ src.site.view.workContentRow.constant.ParameterChapterTitle = 'chapterTitle';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ParameterPageId = 'pageId';
+src.site.view.workContent.constant.ParameterWorkBody = 'workBody';
 
 
 /**
@@ -84,7 +83,7 @@ src.site.view.workContentRow.constant.ParameterPageId = 'pageId';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ParameterWorkBody = 'workBody';
+src.site.view.workContent.constant.ParameterWorkTitle = 'workTitle';
 
 
 /**
@@ -92,7 +91,7 @@ src.site.view.workContentRow.constant.ParameterWorkBody = 'workBody';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ParameterWorkTitle = 'workTitle';
+src.site.view.workContent.constant.ParameterWorkId = 'workId';
 
 
 /**
@@ -100,7 +99,7 @@ src.site.view.workContentRow.constant.ParameterWorkTitle = 'workTitle';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.ParameterWorkId = 'workId';
+src.site.view.workContent.constant.WorkBodyTextContainerId = 'workBodyTextContainer';
 
 
 /**
@@ -108,7 +107,7 @@ src.site.view.workContentRow.constant.ParameterWorkId = 'workId';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkBodyTextContainerId = 'workBodyTextContainer';
+src.site.view.workContent.constant.WorkBodyUrl = 'updateWorkBodyUrl';
 
 
 /**
@@ -116,7 +115,7 @@ src.site.view.workContentRow.constant.WorkBodyTextContainerId = 'workBodyTextCon
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkBodyUrl = 'updateWorkBodyUrl';
+src.site.view.workContent.constant.WorkContentBody = 'workContentBody';
 
 
 /**
@@ -124,7 +123,7 @@ src.site.view.workContentRow.constant.WorkBodyUrl = 'updateWorkBodyUrl';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkContentBody = 'workContentBody';
+src.site.view.workContent.constant.WorkContentRow = 'gridBuilderRowClass';
 
 
 /**
@@ -132,21 +131,21 @@ src.site.view.workContentRow.constant.WorkContentBody = 'workContentBody';
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkContentRow = 'gridBuilderRowClass';
+src.site.view.workContent.constant.WorkContainer = 'workContentContainer';
 
 /**
  @const
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkContentRowHeader = 'workContentRowHeader';
+src.site.view.workContent.constant.WorkContentRowHeader = 'workContentRowHeader';
 
 /**
  @const
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkTitleContainerId = 'workTitleContainer';
+src.site.view.workContent.constant.WorkTitleContainerId = 'workTitleContainer';
 
 
 /**
@@ -154,6 +153,6 @@ src.site.view.workContentRow.constant.WorkTitleContainerId = 'workTitleContainer
  @type {string}
  @protected
  */
-src.site.view.workContentRow.constant.WorkTitleUrl = 'updateWorkTitleUrl';
+src.site.view.workContent.constant.WorkTitleUrl = 'updateWorkTitleUrl';
 
 

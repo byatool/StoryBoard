@@ -1,25 +1,25 @@
 goog.require('goog.string');
 goog.require('src.base.control.controlConstant');
-goog.require('src.site.view.workContentRow');
-goog.require('src.site.view.workContentRow.constant');
+goog.require('src.site.view.workContent');
+goog.require('src.site.view.workContent.constant');
 
-goog.provide('src.test.view.workContentRow.whenCreatingTheWorkBody');
+goog.provide('src.test.view.workContent.row.whenCreatingTheWorkBody');
 
 
 /**
  @export
  */
-src.test.view.workContentRow.whenCreatingTheWorkBody.describe = function () {
+src.test.view.workContent.row.whenCreatingTheWorkBody.describe = function () {
   
   //Using
   
-  var Constant_ = src.site.view.workContentRow.constant;
-  var Current_ = src.site.view.workContentRow;
+  var Constant_ = src.site.view.workContent.constant;
+  var Current_ = src.site.view.workContent.row;
   var ControlConstant_ = src.base.control.controlConstant; 
   
   
   //Fields
-
+  
   var appendChild_;
   var createADiv_;
   var currentItem_;
@@ -93,9 +93,7 @@ src.test.view.workContentRow.whenCreatingTheWorkBody.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
-  
-  
-  
+   
   
   it('should append the chapter title div to the header.', function() {
     var methodWasCalled = false;
@@ -116,8 +114,8 @@ src.test.view.workContentRow.whenCreatingTheWorkBody.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
-
-
+  
+  
   
   it('should return the created row body.', function() {
     expect(callTheMethod_()).toBe(parentContainer_);
@@ -127,8 +125,8 @@ src.test.view.workContentRow.whenCreatingTheWorkBody.describe = function () {
 
 
 describe('When creating the work body , it', function() {
-  src.test.view.workContentRow.whenCreatingTheWorkBody.describe();
+  src.test.view.workContent.row.whenCreatingTheWorkBody.describe();
 });
 
 
-//--namespace="src.test.view.workContentRow.whenCreatingTheWorkBody" ^
+//--namespace="src.test.view.workContent.row.whenCreatingTheWorkBody" ^

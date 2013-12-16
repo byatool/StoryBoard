@@ -1,19 +1,19 @@
 goog.require('goog.string');
-goog.require('src.site.view.workContentRow');
-goog.require('src.site.view.workContentRow.constant');
+goog.require('src.site.view.workContent.constant');
+goog.require('src.site.view.workContent.row');
 
-goog.provide('src.test.view.workContentRow.whenCreatingTheRowHeader');
+goog.provide('src.test.view.workContent.row.whenCreatingTheRowHeader');
 
 /**
  @export
  */
-src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
+src.test.view.workContent.row.whenCreatingTheRowHeader.describe = function () {
   
   //Using
   
-  var Constant_ = src.site.view.workContentRow.constant;
+  var Constant_ = src.site.view.workContent.constant;
   var ControlConstant_ = src.base.control.controlConstant;
-  var Current_ = src.site.view.workContentRow;
+  var Current_ = src.site.view.workContent.row;
   
   
   //Fields
@@ -177,12 +177,12 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
     expect(methodWasCalled).toBe(true);
   });
   
-
+  
   
   it('should append the clear div to the parent.', function() {
     var methodWasCalled = false;
     var clearDiv = {};
-
+    
     createAClearDiv_ = function(){
       return clearDiv;
     };
@@ -206,9 +206,9 @@ src.test.view.workContentRow.whenCreatingTheRowHeader.describe = function () {
 };
 
 describe('When creating the row header, it', function() {
-  src.test.view.workContentRow.whenCreatingTheRowHeader.describe();
+  src.test.view.workContent.row.whenCreatingTheRowHeader.describe();
 });
 
 
-//--namespace="src.test.view.workContentRow.whenCreatingTheRowHeader" ^
+//--namespace="src.test.view.workContent.row.whenCreatingTheRowHeader" ^
 

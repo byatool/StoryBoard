@@ -2,20 +2,21 @@ goog.require('goog.string');
 goog.require('src.base.control.controlConstant');
 goog.require('src.base.control.editableDiv');
 goog.require('src.base.helper.domCreation');
-goog.require('src.site.view.workContentRow');
+goog.require('src.site.view.workContent.constant');
+goog.require('src.site.view.workContent.row');
 
 
-goog.provide('src.test.view.workContentRow.whenInitializingAWorkContentRow');
+goog.provide('src.test.view.workContent.row.whenInitializingAWorkContentRow');
 
 /**
  @export
  */
-src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function () {
+src.test.view.workContent.row.whenInitializingAWorkContentRow.describe = function () {
   
   //Using
   
-  var Constant_ = src.site.view.workContentRow.constant;
-  var Current_ = src.site.view.workContentRow;
+  var Constant_ = src.site.view.workContent.constant;
+  var Current_ = src.site.view.workContent.row;
   var ControlConstant_ = src.base.control.controlConstant;    
   
   
@@ -177,8 +178,8 @@ src.test.view.workContentRow.whenInitializingAWorkContentRow.describe = function
   });    
 };
 
-describe('When creating a WorkContent, it', function() {
-  src.test.view.workContentRow.whenInitializingAWorkContentRow.describe();
+describe('When creating a work content row, it', function() {
+  src.test.view.workContent.row.whenInitializingAWorkContentRow.describe();
 });
 
 
