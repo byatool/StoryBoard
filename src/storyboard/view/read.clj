@@ -15,7 +15,7 @@
   (let [script-text (append-return
                      "var content = src.site.view.mainContent.initialize("
                      "  '1', "
-                     "  'retrieveWork/', "
+                     "  'retrieveWork', "
                      "  'updateChapterTitle/', "
                      "  'updateWorkTitle/', "
                      "  'updatePageBody/', "

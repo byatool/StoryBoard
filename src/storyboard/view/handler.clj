@@ -18,7 +18,7 @@
   
   (GET "/workInformation" [workId]
        (generate-string (retrieve-work-information (Integer. workId))))
-  (|-| retrieveWork ?workId ?page
+  (GET "/retrieveWork/:workId" [workId page]
        (retrieve-work (Integer. workId) (Integer. page)))
   (|-| updateChapterTitle ?text ?itemId
        (do
@@ -32,8 +32,9 @@
        (do
          (adjust-work-title (Integer. itemId) text)
          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
-  (GET "/:workId" [workId] (read-work workId))
-   
+  (GET "/:workId" [workId]
+       (read-work workId))
+  
    
    (route/resources "/")
    (route/not-found "Not Found"))

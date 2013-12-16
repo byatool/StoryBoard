@@ -63,15 +63,14 @@ src.site.view.mainContent.initialize =
     containerAttributes[ControlConstant_.Class] = Constant_.ContainerClass;
     var container = createADiv(containerAttributes);
     
-    //src.base.control.gridBuilder.constant.CreateARow
-    
     var contentGridOptions = {};
     contentGridOptions[GridBuilderConstant_.ContainerClass] = Constant_.WorkContainer;
     contentGridOptions[GridBuilderConstant_.ContainerId] = Constant_.WorkContainer;
     contentGridOptions[GridBuilderConstant_.Url] = retrieveWorkUrl;
     
+    contentGridOptions[GridBuilderConstant_.MainParameter] = workId;
+    
     contentGridOptions[GridBuilderConstant_.Parameters] = {};
-    contentGridOptions[GridBuilderConstant_.Parameters][ViewConstant_.WorkId] = workId;
     contentGridOptions[GridBuilderConstant_.Parameters][ViewConstant_.Page] = 0;
     
     contentGridOptions[GridBuilderConstant_.Map] = {};

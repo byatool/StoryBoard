@@ -22,9 +22,9 @@ goog.provide('src.base.control.formBuilder');
  */
 src.base.control.formBuilder.createTheContainer_ =
   function(containerId, createADiv) {
-    
+
     var ControlConstant_ = src.base.control.controlConstant;
-    
+
     var containerAttributes = {};
     containerAttributes[ControlConstant_.Id] = containerId;
     containerAttributes[ControlConstant_.Class] = containerId;
@@ -33,24 +33,24 @@ src.base.control.formBuilder.createTheContainer_ =
 
 
 /**
- @param {Object} datePickerTextboxes The array of textboxes needing a 
+ @param {Object} datePickerTextboxes The array of textboxes needing a
  date picker.
  @return {Object} The datepicker options
  @private
  */
 src.base.control.formBuilder.createTheDatePickerOptions_ =
   function(datePickerTextboxes) {
-    
+
     var DatePickerConstant_ = src.base.control.popupDatePicker.constant;
     var FormComponentConstant_ = src.base.control.formComponent.constant;
-    
+
     var datePickerInformation = {};
     var datePickerOptions = {};
     datePickerOptions[DatePickerConstant_.ButtonText] = '';
     datePickerOptions[DatePickerConstant_.TextboxName] = 'theTextbox';
     datePickerInformation[FormComponentConstant_.DatepickerOptions] = datePickerOptions;
     datePickerInformation[FormComponentConstant_.DatepickerTextboxes] = datePickerTextboxes;
-    
+
     return datePickerInformation;
   };
 
@@ -81,13 +81,14 @@ src.base.control.formBuilder.createTheForm_ =
  buttonId
  @param {string} buttonId The id for the button.
  @param {string} buttonClass The class for the button.
+ @param {string} buttonText The optional text for the button.
  @param {function} createAButton The function used to
  created the button.
  @return {Object} The created button.
  @private
  */
 src.base.control.formBuilder.createTheButton_ =
-  function(buttonId, buttonClass, createAButton) {
+  function(buttonId, buttonClass, buttonText, createAButton) {
     
     var ControlConstant_ = src.base.control.controlConstant;
     var FormComponentConstant_ = src.base.control.formComponent.constant;
@@ -96,7 +97,7 @@ src.base.control.formBuilder.createTheButton_ =
     submitButtonAttributes[ControlConstant_.Id] = buttonId;
     submitButtonAttributes[ControlConstant_.Type] = ControlConstant_.Button;
     submitButtonAttributes[ControlConstant_.Class] = FormComponentConstant_.ButtonClass;
-    return createAButton(submitButtonAttributes);
+    return createAButton(submitButtonAttributes, buttonText);
   };
 
 
@@ -107,6 +108,8 @@ src.base.control.formBuilder.createTheButton_ =
  @param {string} postTo The url for the form to post to.
  @param {Object} controlSpecs The list representation of the
  needed inputs.
+ @param {?string} buttonText The optional text for the submit
+ button.
  @param {?function} postSubmit The function to be called after
  the form submits.  This can be null.
  @param {?function} createAForm The function used to create the
@@ -129,9 +132,10 @@ src.base.control.formBuilder.createTheButton_ =
  @export
  */
 src.base.control.formBuilder.initialize =
-  function(containerId, postTo, controlSpecs, postSubmit, createAForm, forEach,
-           createADiv, createControl, createAButton, appendChild,
-           createValidation, initializeTheForm) {
+  function(containerId, postTo, controlSpecs, buttonText,
+           postSubmit, createAForm, forEach,
+           createADiv, createControl, createAButton,
+           appendChild, createValidation, initializeTheForm) {
     
     createAForm = createAForm ?
       createAForm :
@@ -179,7 +183,7 @@ src.base.control.formBuilder.initialize =
                                                  createADiv);
     
     
-    var form = Current_.createTheForm_(Constant_.FormId,
+    var form = Current_.createTheForm_(Constant_.FormClass,
                                        postTo,
                                        Constant_.FormId,
                                        createAForm);
@@ -197,23 +201,24 @@ src.base.control.formBuilder.initialize =
     
     var submitButton = Current_.createTheButton_(Constant_.FormSubmit,
                                                  FormComponentConstant_.ButtonClass,
+                                                 buttonText,
                                                  createAButton);
     
     appendChild(form, submitButton);
     appendChild(container, form);
-    
-    
+
+
     var validationWrapper = createValidation(controlSpecs);
     var datePickerInformation = Current_.createTheDatePickerOptions_(datePickerTextboxes);
 
     postSubmit = postSubmit ? postSubmit : function() {};
-    
+
     initializeTheForm(form,
                       datePickerInformation,
                       validationWrapper,
                       null,
                       postSubmit);
-    
+
     return container;
   };
 

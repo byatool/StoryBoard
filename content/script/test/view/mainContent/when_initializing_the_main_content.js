@@ -110,7 +110,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
         options[GridBuilderConstant_.ContainerClass] === Constant_.WorkContainer &&
         options[GridBuilderConstant_.ContainerId] === Constant_.WorkContainer &&
         options[GridBuilderConstant_.Url] === RetrieveWorkUrl_ && 
-        options[GridBuilderConstant_.Parameters][ViewConstant_.WorkId] === WorkId_ &&
+        options[GridBuilderConstant_.MainParameter] === WorkId_ &&
         options[GridBuilderConstant_.Parameters][ViewConstant_.Page] === 0 &&
         options[GridBuilderConstant_.Map][GridBuilderConstant_.HeaderText] === '' &&
         options[GridBuilderConstant_.Map][GridBuilderConstant_.PropertyName] === '' &&
