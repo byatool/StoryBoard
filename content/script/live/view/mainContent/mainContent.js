@@ -39,6 +39,8 @@ goog.provide('src.site.view.mainContent');
  to create the work information container.
  @param {?function} initializeTheWorkContentGrid The function used to
  fill the grid.
+ @param {?function} createAClearDiv The function used to create a 
+ clear both div.
  @param {?function} appendChild The function used to add
  elements to the main container.
  @return {Object} The created control.
@@ -49,20 +51,25 @@ src.site.view.mainContent.initialize =
            workTitleUrl, workBodyUrl, retrieveInformation,
            authorNameUpdate, authorSummaryUpdate, workTitleUpdate,
            workSummaryUpdate, containerId, createADiv,
-           initializeWorkInformation, initializeTheWorkContentGrid, appendChild) {
-
+           initializeWorkInformation, initializeTheWorkContentGrid,
+           createAClearDiv, appendChild) {
+    
     createADiv = createADiv ?
       createADiv :
       src.base.helper.domCreation.div;
-
+    
     initializeWorkInformation = initializeWorkInformation ?
       initializeWorkInformation :
       src.site.view.workInformation.initialize;
-
+    
     initializeTheWorkContentGrid = initializeTheWorkContentGrid ?
       initializeTheWorkContentGrid :
       src.site.view.workContent.initialize;
 
+    createAClearDiv = createAClearDiv ?
+      createAClearDiv :
+      src.base.helper.domCreation.createAClearDiv;
+    
     appendChild = appendChild ?
       appendChild :
       goog.dom.appendChild;
@@ -90,15 +97,16 @@ src.site.view.mainContent.initialize =
                                                     authorSummaryUpdate,
                                                     workTitleUpdate,
                                                     workSummaryUpdate);
-
+    
     var gridResult = initializeTheWorkContentGrid(workId,
                                                   retrieveWorkUrl,
                                                   chapterTitleUrl,
                                                   workTitleUrl,
                                                   workBodyUrl);
-
+    
     appendChild(container, workInformation);
     appendChild(container, gridResult[ControlConstant_.CreatedControl]);
-
+    appendChild(container, createAClearDiv());
+    
     return container;
   };

@@ -42,6 +42,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   var WorkTitleUrl_ = goog.string.getRandomString();
   
   var appendChild_;
+  var createClearDiv_;
   var createADiv_;
   var grid_;
   var gridResult_;
@@ -76,6 +77,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
       }};
     
     appendChild_ = function() {};
+    createClearDiv_ = function(){};
     initializeWorkInformation_ = function(){}; 
   });
   
@@ -86,7 +88,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
     return Current_.initialize(WorkId_, RetrieveWorkUrl_, ChapterTitleUrl_, WorkTitleUrl_, WorkBodyUrl_,
                                RetrieveInformation_, AuthorNameUpdate_, AuthorSummaryUpdate_, WorkTitleUpdate_,
                                WorkSummaryUpdate_, ContainerId_, createADiv_, initializeWorkInformation_,
-                               initializeTheGrid_, appendChild_);
+                               initializeTheGrid_, createClearDiv_, appendChild_);
   };
   
   
@@ -153,7 +155,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   });
   
   
-  it('should initialize the work content grid..', function() {
+  it('should initialize the work content grid.', function() {
     var methodWasCalled = false;
     
     initializeTheGrid_ = function(workId, retrieveWorkUrl, chapterTitleUrl, workTitleUrl, workBodyUrl){
@@ -165,7 +167,7 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
       
       return grid_;
     };
-     
+    
     callTheMethod_();
     
     expect(methodWasCalled).toBe(true);
@@ -184,6 +186,26 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
+  
+
+  it('should append a clear div.', function() {
+    var methodWasCalled = false;
+    var clearDiv = {};
+    
+    createClearDiv_ = function() {
+      return clearDiv;
+    };
+    
+    appendChild_ = function(parent, child){
+      methodWasCalled = methodWasCalled || 
+        (parent === parentContainer_ && child === clearDiv);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
   
   
   

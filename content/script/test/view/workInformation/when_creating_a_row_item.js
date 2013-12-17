@@ -68,7 +68,8 @@ src.test.view.workInformation.rowItem.whenCreatingARowItem.describe = function (
     
     createALabel_ = function(attributes, text){
       methodWasCalled = methodWasCalled ||
-        (attributes[ControlConstant_.Class] === Constant_.WorkInformationLabel &&
+        (Constant_.WorkInformationLabel !== undefined &&
+         attributes[ControlConstant_.Class] === Constant_.WorkInformationLabel &&
          text === LabelText_);
     };
     

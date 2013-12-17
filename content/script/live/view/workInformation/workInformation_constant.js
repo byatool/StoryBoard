@@ -36,7 +36,7 @@ src.site.view.workInformation.constant.AuthorSummary = 'authorSummary';
  @type {string}
  @protected
  */
-src.site.view.workInformation.constant.AuthorSummaryLabel = 'summary: ';
+src.site.view.workInformation.constant.AuthorSummaryLabel = 'about: ';
 
 
 /**
@@ -45,6 +45,14 @@ src.site.view.workInformation.constant.AuthorSummaryLabel = 'summary: ';
  @protected
  */
 src.site.view.workInformation.constant.ContainerClass = 'workInformationContainer';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.workInformation.constant.WorkInformationLabel = 'workInformationLabel';
 
 
 /**

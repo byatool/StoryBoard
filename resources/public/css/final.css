@@ -1,3 +1,23 @@
+.error {
+  border-color: #545454;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0.1em;
+  background-color: #984545;
+  color: white;
+  font-size: large;
+  padding: 0.4em 0.4em 0 0.4em; }
+
+.info {
+  border-color: #545454;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0.1em;
+  background-color: #628a2c;
+  color: white;
+  font-size: large;
+  padding: 0.4em 0.4em 0 0.4em; }
+
 .clearBoth {
   clear: both; }
 
@@ -10,138 +30,203 @@
 pre {
   white-space: pre-wrap; }
 
-.workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader {
-  background-color: #5d5d5d;
-  border-color: #5d5d5d;
-  border-radius: 0.5em 0.5em 0 0;
-  border-style: solid;
-  border-width: 0.1em;
-  padding: 0.3em 0.3em 0.3em 0.3em;
-  width: 50em; }
-  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle {
-    float: left;
-    width: 20em; }
-    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textContainer {
+.workContentContainer {
+  float: left; }
+  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader {
+    background-color: #5d5d5d;
+    border-color: #5d5d5d;
+    border-radius: 0.5em 0.5em 0 0;
+    border-style: solid;
+    border-width: 0.1em;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    width: 50em; }
+    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle {
+      float: left;
+      width: 20em; }
+      .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textContainer {
+        color: #dfdfdf;
+        margin: 0 0 0 0;
+        font-size: 1.5em; }
+      .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0; }
+        .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm .editTextArea {
+          border-color: #545454;
+          border-radius: 5px;
+          border-style: solid;
+          border-width: 0.1em;
+          height: 1.5em;
+          width: 100%; }
+    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .pageNumberContainer {
       color: #dfdfdf;
       margin: 0 0 0 0;
-      font-size: 1.5em; }
-    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm {
+      float: right;
+      margin: 0 1em 0 0; }
+  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody {
+    background-color: #5d5d5d;
+    border-color: #5d5d5d;
+    border-radius: 0 0 0.5em 0.5em;
+    border-style: solid;
+    border-width: 0.1em;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    width: 50em; }
+    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer {
+      background-color: #9e9e9e;
+      min-height: 20em;
+      padding: 0.3em 0.3em 0.3em 0.3em; }
+      .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer .textContainer {
+        color: #dfdfdf;
+        margin: 0 0 0 0;
+        font-size: 1.2em; }
+      .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer .editTextArea {
+        min-height: 20em;
+        width: 52em; }
+  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .submitButton {
+    border-color: #545454;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.1em;
+    background-color: #007898;
+    color: #dfdfdf;
+    font-size: 1em;
+    padding: 0 0.1em 0.1em 0.1em;
+    width: 2em; }
+    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .submitButton:hover {
+      background-color: #dfdfdf !important;
+      color: #414141; }
+  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .updateFormCancel {
+    border-color: #545454;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.1em;
+    background-color: #007898;
+    color: #dfdfdf;
+    font-size: 1em;
+    padding: 0 0.1em 0.1em 0.1em;
+    margin: 0 0 0 0.2em;
+    width: 2em; }
+    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .updateFormCancel:hover {
+      background-color: #dfdfdf !important;
+      color: #414141; }
+  .workContentContainer .gridBuilderButtonRowClass {
+    margin: 0.3em 0 0 0;
+    padding: 0 0 0.5em 0; }
+    .workContentContainer .gridBuilderButtonRowClass .pagerEnabledClass {
+      border-color: #545454;
+      border-radius: 5px;
+      border-style: solid;
+      border-width: 0.1em;
+      background-color: #007898;
+      color: #dfdfdf;
+      font-size: 1em;
+      padding: 0 0.1em 0.1em 0.1em;
+      float: left;
+      font-weight: bold;
+      margin: 0 0.2em 0 0;
+      padding: 0.5em 0.5em 0.5em 0.5em !important;
+      width: 2em; }
+      .workContentContainer .gridBuilderButtonRowClass .pagerEnabledClass:hover {
+        background-color: #dfdfdf !important;
+        color: #414141; }
+    .workContentContainer .gridBuilderButtonRowClass .pagerDisabledClass {
+      border-color: #545454;
+      border-radius: 5px;
+      border-style: solid;
+      border-width: 0.1em;
+      background-color: #007898;
+      color: #dfdfdf;
+      font-size: 1em;
+      padding: 0 0.1em 0.1em 0.1em;
+      float: left;
+      font-weight: bold;
+      margin: 0 0.2em 0 0;
+      padding: 0.5em 0.5em 0.5em 0.5em !important;
+      width: 2em;
+      background-color: #007898;
+      color: #414141; }
+      .workContentContainer .gridBuilderButtonRowClass .pagerDisabledClass:hover {
+        background-color: #dfdfdf !important;
+        color: #414141; }
+      .workContentContainer .gridBuilderButtonRowClass .pagerDisabledClass:hover {
+        background-color: #007898 !important; }
+
+.workInformationContainer {
+  border-color: #545454;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0.1em;
+  background-color: #414141;
+  float: left;
+  margin: 0 0.3em 0 0;
+  padding: 0.3em 0.3em 0 0.3em; }
+  .workInformationContainer .workInformationRow {
+    border-color: #545454;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.1em;
+    background-color: #007898;
+    color: white;
+    margin: 0 0 0.3em 0;
+    padding: 0.3em 0.3em 0.3em 0.3em; }
+    .workInformationContainer .workInformationRow .workInformationLabel {
+      float: left;
+      font-size: 1em;
+      width: 5em; }
+    .workInformationContainer .workInformationRow .textContainer {
+      border-color: #545454;
+      border-radius: 5px;
+      border-style: solid;
+      border-width: 0.1em;
+      background-color: #414141;
+      font-size: 1em;
       margin: 0 0 0 0;
-      padding: 0 0 0 0; }
-      .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .chapterTitle .textUpdateForm .editTextArea {
+      padding: 0.3em 0.3em 0.3em 0.3em;
+      width: 20em; }
+    .workInformationContainer .workInformationRow .textUpdateForm {
+      border-color: #545454;
+      border-radius: 5px;
+      border-style: solid;
+      border-width: 0.1em;
+      background-color: #5d5d5d;
+      padding: 0.3em 0.3em 0.3em 0.3em;
+      width: 16.1em; }
+      .workInformationContainer .workInformationRow .textUpdateForm .editTextArea {
+        border-color: #545454;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 0.1em; }
+      .workInformationContainer .workInformationRow .textUpdateForm .buttonContainer .submitButton {
         border-color: #545454;
         border-radius: 5px;
         border-style: solid;
         border-width: 0.1em;
-        height: 1.5em;
-        width: 100%; }
-  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentRowHeader .pageNumberContainer {
-    color: #dfdfdf;
-    margin: 0 0 0 0;
-    float: right;
-    margin: 0 1em 0 0; }
-.workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody {
-  background-color: #5d5d5d;
-  border-color: #5d5d5d;
-  border-radius: 0 0 0.5em 0.5em;
-  border-style: solid;
-  border-width: 0.1em;
-  padding: 0.3em 0.3em 0.3em 0.3em;
-  width: 50em; }
-  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer {
-    background-color: #9e9e9e;
-    min-height: 20em;
-    padding: 0.3em 0.3em 0.3em 0.3em; }
-    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer .textContainer {
-      color: #dfdfdf;
-      margin: 0 0 0 0;
-      font-size: 1.2em; }
-    .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .workContentBody .workBodyTextContainer .editTextArea {
-      min-height: 20em;
-      width: 52em; }
-.workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .error {
-  border-color: #545454;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 0.1em;
-  background-color: #984545;
-  color: white;
-  font-size: large;
-  padding: 0.4em 0.4em 0 0.4em; }
-.workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .info {
-  border-color: #545454;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 0.1em;
-  background-color: #628a2c;
-  color: white;
-  font-size: large;
-  padding: 0.4em 0.4em 0 0.4em; }
-.workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .submitButton {
-  border-color: #545454;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 0.1em;
-  background-color: #007898;
-  color: #dfdfdf;
-  font-size: 1em;
-  padding: 0 0.1em 0.1em 0.1em;
-  width: 2em; }
-  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .submitButton:hover {
-    background-color: #dfdfdf !important;
-    color: #414141; }
-.workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .updateFormCancel {
-  border-color: #545454;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 0.1em;
-  background-color: #007898;
-  color: #dfdfdf;
-  font-size: 1em;
-  padding: 0 0.1em 0.1em 0.1em;
-  margin: 0 0 0 0.2em;
-  width: 2em; }
-  .workContentContainer .gridBuilderRowContainer .gridBuilderRowClass .updateFormCancel:hover {
-    background-color: #dfdfdf !important;
-    color: #414141; }
-.workContentContainer .gridBuilderButtonRowClass {
-  margin: 0.3em 0 0 0;
-  padding: 0 0 0.5em 0; }
-  .workContentContainer .gridBuilderButtonRowClass .pagerEnabledClass {
-    border-color: #545454;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 0.1em;
-    background-color: #007898;
-    color: #dfdfdf;
-    font-size: 1em;
-    padding: 0 0.1em 0.1em 0.1em;
-    float: left;
-    font-weight: bold;
-    margin: 0 0.2em 0 0;
-    padding: 0.5em 0.5em 0.5em 0.5em !important;
-    width: 2em; }
-    .workContentContainer .gridBuilderButtonRowClass .pagerEnabledClass:hover {
-      background-color: #dfdfdf !important;
-      color: #414141; }
-  .workContentContainer .gridBuilderButtonRowClass .pagerDisabledClass {
-    border-color: #545454;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 0.1em;
-    background-color: #007898;
-    color: #dfdfdf;
-    font-size: 1em;
-    padding: 0 0.1em 0.1em 0.1em;
-    float: left;
-    font-weight: bold;
-    margin: 0 0.2em 0 0;
-    padding: 0.5em 0.5em 0.5em 0.5em !important;
-    width: 2em;
-    background-color: #007898;
-    color: #414141; }
-    .workContentContainer .gridBuilderButtonRowClass .pagerDisabledClass:hover {
-      background-color: #dfdfdf !important;
-      color: #414141; }
-    .workContentContainer .gridBuilderButtonRowClass .pagerDisabledClass:hover {
-      background-color: #007898 !important; }
+        background-color: #007898;
+        color: #dfdfdf;
+        font-size: 1em;
+        padding: 0 0.1em 0.1em 0.1em;
+        width: 2em; }
+        .workInformationContainer .workInformationRow .textUpdateForm .buttonContainer .submitButton:hover {
+          background-color: #dfdfdf !important;
+          color: #414141; }
+      .workInformationContainer .workInformationRow .textUpdateForm .buttonContainer .updateFormCancel {
+        border-color: #545454;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 0.1em;
+        background-color: #007898;
+        color: #dfdfdf;
+        font-size: 1em;
+        padding: 0 0.1em 0.1em 0.1em;
+        margin: 0 0 0 0.2em;
+        width: 2em; }
+        .workInformationContainer .workInformationRow .textUpdateForm .buttonContainer .updateFormCancel:hover {
+          background-color: #dfdfdf !important;
+          color: #414141; }
+    .workInformationContainer .workInformationRow .workInformationRowworkTitle {
+      float: left; }
+    .workInformationContainer .workInformationRow .workInformationRowworkSummary {
+      float: left; }
+    .workInformationContainer .workInformationRow .workInformationRowauthorName {
+      float: left; }
+    .workInformationContainer .workInformationRow .workInformationRowauthorSummary {
+      float: left; }

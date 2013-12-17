@@ -1,0 +1,58 @@
+.workInformationContainer
+  @include defaultBorder
+  background-color : $greyFive
+  float : left
+  margin : 0 .3em 0 0
+  padding : .3em .3em 0 .3em
+    
+  .workInformationRow
+    @include defaultBorder
+    background-color : $blueFive
+    color : $white
+    margin : 0 0 .3em 0
+    padding : .3em .3em .3em .3em
+  
+    .workInformationLabel
+      float : left
+      font-size      : 1em
+      width : 5em
+    
+    .textContainer
+      @include defaultBorder
+      background-color: $greyFive
+      font-size      : 1em
+      margin : 0 0 0 0
+      padding: .3em .3em .3em .3em
+      width : 20em
+        
+    .textUpdateForm
+      @include defaultBorder
+      background-color : $greyThree
+      padding : .3em .3em .3em .3em
+      width : 16.1em
+    
+      .editTextArea
+        @include defaultBorder
+        
+      .buttonContainer
+      
+        .submitButton
+          @include defaultButton
+          width              : 2em
+          
+        .updateFormCancel
+          @include defaultButton
+          margin             : 0 0 0 .2em
+          width              : 2em
+    
+    .workInformationRowworkTitle
+      float : left
+      
+    .workInformationRowworkSummary
+      float : left
+      
+    .workInformationRowauthorName
+      float : left
+      
+    .workInformationRowauthorSummary
+      float : left

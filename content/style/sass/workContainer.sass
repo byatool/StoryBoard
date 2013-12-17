@@ -21,41 +21,41 @@
   
     
 .workContentContainer
-  
+  float : left
   
   .gridBuilderRowContainer
     
     
     .gridBuilderRowClass
-  
-  
+      
+
       .workContentRowHeader
         @include contentSection(.5em .5em 0 0)
-      
         
+
         .chapterTitle
           float            : left
           width            : 20em
-          
+            
           .textContainer
             @include textContainer
             font-size      : 1.5em
-            
-            
+  
+              
           .textUpdateForm
             margin         : 0 0 0 0
             padding        : 0 0 0 0
-          
+    
             .editTextArea
               @include defaultBorder
               height       : 1.5em
               width        : 100%
-          
+    
         .pageNumberContainer
           @include textContainer
           float            : right
           margin           : 0 1em 0 0
-      
+            
       .workContentBody
         @include contentSection(0 0 .5em .5em)
         
@@ -63,25 +63,19 @@
           background-color : $greyTwo
           min-height       : 20em
           padding          : .3em .3em .3em .3em
-
+    
           .textContainer
             @include textContainer
             font-size      : 1.2em
-  
+          
           .editTextArea
             min-height     : 20em
             width          : 52em
-            
-      .error
-        @include messageDisplay($errorRed)
-    
-      .info
-        @include messageDisplay($greenFive)
-      
+              
       .submitButton
         @include defaultButton
         width              : 2em
-          
+        
       .updateFormCancel
         @include defaultButton
         margin             : 0 0 0 .2em

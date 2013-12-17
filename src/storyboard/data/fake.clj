@@ -18,7 +18,7 @@ Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvi
 (defrecord Work [id title author summary chapters])
 
 ;; Response
-(defrecord workBasicInfoResponse [workId workTitle workSummary authorId authorSummary])
+(defrecord workBasicInfoResponse [workId workTitle workSummary authorId authorName authorSummary])
 (defrecord workPageResponse [chapterId chapterTitle pageId workBody pageNumber])
 
 
@@ -28,7 +28,7 @@ Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvi
 
 ;; Mock database
 (def authors [(Author. 1 "sean" "this is the summary" [])])
-(def works [(Work. 1 (paragraph-part 20 0) (first authors) (paragraph-part 20 0) [])])
+(def works [(Work. 1 (paragraph-part 20 0) (first authors) (paragraph-part 300 0) [])])
 (def chapters [(Chapter. 1 "chapter 1" (first works))
                (Chapter. 2 "chapter 2" (first works))])
 (def pages [(Page. 10 (paragraph-part 100 0) 1 (first chapters))
@@ -40,8 +40,9 @@ Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvi
   (first
    (map #(workBasicInfoResponse.
           (:id %)
-          (:summary %)
           (:title %)
+          (:summary %)
+          (:id (:author %))
           (:name (:author %))
           (:summary (:author %)))
         (filter #(= work-id (:id %)) works)))) 

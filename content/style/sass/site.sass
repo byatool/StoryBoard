@@ -29,6 +29,13 @@ $greyFive           : #414141
 
 $defaultBorderWidth : .1em
 
+@mixin defaultBorder
+  border-color      : $greyFour
+  border-radius     : 5px
+  border-style      : solid
+  border-width      : $defaultBorderWidth
+  
+    
 @mixin defaultButton
   @include defaultBorder
   background-color  : $blueFive
@@ -48,14 +55,6 @@ $defaultBorderWidth : .1em
   padding            : .5em .5em .5em .5em !important
   width              : 2em
 
-    
-@mixin defaultBorder
-  border-color      : $greyFour
-  border-radius     : 5px
-  border-style      : solid
-  border-width      : $defaultBorderWidth
-
-
 @mixin messageDisplay($color)
   @include defaultBorder
   background-color   : $color
@@ -63,7 +62,13 @@ $defaultBorderWidth : .1em
   font-size          : large
   padding            : .4em .4em 0 .4em
   
-
+    
+.error
+  @include messageDisplay($errorRed)
+  
+.info
+  @include messageDisplay($greenFive)
+  
 .clearBoth
   clear             : both
   
