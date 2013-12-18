@@ -1,8 +1,8 @@
 (ns storyboard.view.page
   (:use
-   [storyboard.data.fake :only (pages update-page-body)]
+   [storyboard.data.fake :only (pages update-pages-body)]
    clojure.tools.trace))
 
 
-(defn adjust-page-body [id body]
-  (update-page-body id body))
+(defn update-page-body [id body]
+  (update-pages-body id body))

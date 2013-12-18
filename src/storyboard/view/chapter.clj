@@ -1,8 +1,7 @@
 (ns storyboard.view.chapter
   (:use
-   [storyboard.data.fake :only (chapters update-chapter-title)]
+   [storyboard.data.fake :only (update-chapters-title)]
    clojure.tools.trace))
 
-
-(defn adjust-chapter-title [id title]
-  (update-chapter-title id title))
+(defn update-chapter-title [id title]
+  (update-chapters-title id title))

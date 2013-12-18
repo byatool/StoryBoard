@@ -35,7 +35,27 @@ Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvi
             (Page. 22 (paragraph-part 100 100) 2 (first chapters))])
 
 
+;; MOCK database macros
+
+
+(defmacro update-text [name property]
+  "This is only to be used with mocked/in memory updates"
+  `(def ~(symbol (join ["update-" (str name) "-" (str property)]))
+     (fn [~(symbol "id") ~(symbol "text")]
+       (def ~(symbol (str name))
+         (map
+          #(if (= ~(symbol "id") (:id %))
+             (assoc % ~(keyword (str property)) ~(symbol "text"))
+             %)
+          ~(symbol (str name)))))))
+
+
 ;; MOCK database methods
+
+(defn retrieve-author-actual [work]
+  (first
+   (filter #(= (:id (:author work)) (:id %)) authors)))
+
 (defn retrieve-work-information-base [work-id]
   (first
    (map #(workBasicInfoResponse.
@@ -43,31 +63,19 @@ Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvi
           (:title %)
           (:summary %)
           (:id (:author %))
-          (:name (:author %))
-          (:summary (:author %)))
-        (filter #(= work-id (:id %)) works)))) 
+          (:name (retrieve-author-actual %))
+          (:summary (retrieve-author-actual %)))
+        (filter #(= work-id (:id %)) works))))
 
 
-(defn update-chapter-title [id text]
-  (def chapters (map
-                 #(if (= id (:id %))
-                    (assoc % :title text )
-                    %)
-                 chapters)))
+(filter #(= 1 (:id %)) authors)
+
+(update-text authors name)
+(update-text authors summary)
+(update-text chapters title)
+(update-text pages body)
+(update-text works summary)
+(update-text works title)
 
 
-(defn update-page-body [id text]
-  (do
-    (trace id)
-    (def pages (map
-                #(if (= id (:id %))
-                   (assoc % :body text)
-                  %)
-                pages))))
 
-(defn update-work-title [id text]
-  (def works (map
-              #(if (= id (:id %))
-                 (assoc % :title text )
-                 %)
-              works)))

@@ -20,10 +20,10 @@
                      "  'updateWorkTitle/', "
                      "  'updatePageBody/', "
                      "  'workInformation', "
-                     "  '/', "
-                     "  '/', "
-                     "  '/', "
-                     "  '/', "
+                     "  'updateAuthorName/', "  ;; authorNameUpdate 
+                     "  'updateAuthorSummary/', "  ;; authorSummaryUpdate
+                     "  'updateWorkTitle/', "  ;; workTitleUpdate
+                     "  'updateWorkSummary/', "  ;; workSummaryUpdate
                      "  'workContainer' "
                      " );"
                      " "
