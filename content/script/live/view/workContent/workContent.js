@@ -32,40 +32,45 @@ goog.provide('src.site.view.workContent');
 src.site.view.workContent.initialize =
   function(workId, retrieveWorkUrl, chapterTitleUrl,
            workTitleUrl, workBodyUrl, initializeTheGrid) {
-
+    
     initializeTheGrid = initializeTheGrid ?
       initializeTheGrid :
       src.base.control.gridBuilder.initialize;
-
+    
     /* Start */
-
+    
     var Constant_ = src.site.view.workContent.constant;
     var ControlConstant_ = src.base.control.controlConstant;
     var GridBuilderConstant_ = src.base.control.gridBuilder.constant;
     var ViewConstant_ = src.site.view.constant;
     var WorkContentRow_ = src.site.view.workContent.row;
-
+    
     var contentGridOptions = {};
-
+    
     contentGridOptions[GridBuilderConstant_.ContainerClass] = Constant_.WorkContainer;
     contentGridOptions[GridBuilderConstant_.ContainerId] = Constant_.WorkContainer;
     contentGridOptions[GridBuilderConstant_.Url] = retrieveWorkUrl;
-
+    
     contentGridOptions[GridBuilderConstant_.MainParameter] = workId;
-
+    
     contentGridOptions[GridBuilderConstant_.Parameters] = {};
     contentGridOptions[GridBuilderConstant_.Parameters][ViewConstant_.Page] = 0;
-
+    
     contentGridOptions[GridBuilderConstant_.Map] = {};
     contentGridOptions[GridBuilderConstant_.Map][GridBuilderConstant_.HeaderText] = '';
     contentGridOptions[GridBuilderConstant_.Map][GridBuilderConstant_.PropertyName] = '';
     contentGridOptions[GridBuilderConstant_.Map][ControlConstant_.Class] = '';
-
+    
     contentGridOptions[Constant_.ChapterTitleUrl] = chapterTitleUrl;
     contentGridOptions[Constant_.WorkBodyUrl] = workBodyUrl;
     contentGridOptions[Constant_.WorkTitleUrl] = workTitleUrl;
     contentGridOptions[GridBuilderConstant_.CreateARow] = WorkContentRow_.create;
-
+    
+    //This is for the wall refresh... function should be passed in
+    //src.site.view.constant.PageId
+    //src.base.control.gridBuilder.constant.ListProperty
+    //contentGridOptions[GridBuilderConstant_.CallOnRefresh] = function(result) { alert(result['List'][0]['pageId']); };
+    
     return initializeTheGrid(contentGridOptions);
   };
 

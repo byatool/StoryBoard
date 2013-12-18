@@ -89,7 +89,10 @@ src.site.view.mainContent.initialize =
     containerAttributes[ControlConstant_.Class] = Constant_.ContainerClass;
     var container = createADiv(containerAttributes);
 
-
+    // wall.initialize
+    // document, containerId, postTo, retrieveItemsUrl, deleteUrl,
+    // subjectId, editableUrl 
+    
     var workInformation = initializeWorkInformation(workId,
                                                     Constant_.WorkInformationContainer,
                                                     retrieveInformation,

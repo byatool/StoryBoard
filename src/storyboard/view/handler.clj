@@ -20,13 +20,28 @@
             [cheshire.core :refer :all]))
 
 
+(defroutes work-routes
+  )
+
 (defroutes app-routes
-  
   (GET "/workInformation/:workId" [workId]
        (generate-string (retrieve-work-information (Integer. workId))))
   
   (GET "/retrieveWork/:workId" [workId page]
-       (retrieve-work (Integer. workId) (Integer. page)))
+       (retrieve-work-and-page (Integer. workId) (Integer. page)))
+  
+  
+  ;;  Page Wall
+  
+  (GET "/retrievePageWall/:pageId [pageId]"
+       (generate-string ))
+  
+  (|-| addWallPost ?subjectId ?entryTextbox
+       (do
+         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+  
+  
+  ;;  Work Information
   
   (|-| updateAuthorSummary ?text ?itemId
        (do
@@ -38,6 +53,19 @@
          (update-author-name (Integer. itemId) text)
          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
   
+  
+  (|-| updateWorkTitle ?text ?itemId
+       (do
+         (update-work-title (Integer. itemId) text)
+         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+  
+  (|-| updateWorkSummary ?text ?itemId
+       (do
+         (update-work-summary (Integer. itemId) text)
+         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+  
+  ;; Page Read
+  
   (|-| updateChapterTitle ?text ?itemId
        (do
          (update-chapter-title (Integer. itemId) text)
@@ -48,15 +76,8 @@
          (update-page-body (Integer. itemId) text)
          (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
   
-  (|-| updateWorkSummary ?text ?itemId
-       (do
-         (update-work-summary (Integer. itemId) text)
-         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
   
-  (|-| updateWorkTitle ?text ?itemId
-       (do
-         (update-work-title (Integer. itemId) text)
-         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+  
   (GET "/:workId" [workId]
        (read-work workId))
   

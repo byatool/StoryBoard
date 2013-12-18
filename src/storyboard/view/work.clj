@@ -3,6 +3,7 @@
    [storyboard.data.fake :only
     (update-works-summary
      update-works-title
+     retrieve-work-and-page
      retrieve-work-information-base)]
    clojure.tools.trace))
 
@@ -10,6 +11,9 @@
 
 (defn retrieve-work-information [work-id]
   (retrieve-work-information-base work-id))
+
+(defn retrieve-work [work-id page]
+  (retrieve-work-and-page work-id page))
 
 ;; Post
 

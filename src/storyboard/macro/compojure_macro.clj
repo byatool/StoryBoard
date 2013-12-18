@@ -22,9 +22,10 @@
 (defn string-to-symbol [items]
   (map #(symbol(remove-question-mark %)) items))
 
-;; ;;(macroexpand-1 '(-|| index  ("adfa")))
-;; ;;(macroexpand-1 '(-|| index user ("adfa")))
-;; ;;(macroexpand-1 '(|-| index user ?test ?me ("adfa")))
+;; (macroexpand-1 '(|-| updateChapterTitle ?text ?itemId
+;;                      (do
+;;                        (+ 1 1)
+;;                        (+ 2 2))))
 (defmacro |-| [& items]
   (let [method-name (first items)
         body (last items)
@@ -34,7 +35,4 @@
            ~body)))
 
 
-(macroexpand-1 '(|-| updateChapterTitle ?text ?itemId
-                   (do
-                     (+ 1 1)
-                     (+ 2 2))))
+
