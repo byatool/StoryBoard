@@ -8,7 +8,15 @@
    [storyboard.utility.web-utility :only (append-return resolve-next-page resolve-previous-page)])
   (:require
    storyboard.data.model)
-  (:import [storyboard.data.model Author Work Chapter Page WorkBasicInfoResponse WorkPageResponse]))
+  (:import
+   [storyboard.data.model
+    Author
+    Chapter
+    Page
+    WallItem
+    Work
+    WorkBasicInfoResponse
+    WorkPageResponse]))
 
 
 ;; [storyboard.data.model :only (Work Chapter Page)]
@@ -32,6 +40,10 @@ Nullam tincidunt ipsum ante, at ullamcorper neque feugiat non. Aliquam nec pulvi
                (Chapter. 2 "chapter 2" (first works))])
 (def pages [(Page. 10 (paragraph-part 100 0) 0 (first chapters))
             (Page. 22 (paragraph-part 100 100) 1 (first chapters))])
+(def page-items [(WallItem. 15 (paragraph-part 100 0)  (first authors) (first pages))
+                 (WallItem. 16 (paragraph-part 100 101) (first authors) (first pages))
+                 (WallItem. 17 (paragraph-part 100 201)  (first authors) (second pages))
+                 (WallItem. 18 (paragraph-part 100 301)  (first authors) (second pages))])
 
 
 ;; MOCK database macros

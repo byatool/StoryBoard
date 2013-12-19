@@ -230,3 +230,44 @@ pre {
       float: left; }
     .workInformationContainer .workInformationRow .workInformationRowauthorSummary {
       float: left; }
+
+.wallContainer {
+  float: left;
+  margin: 0 0 0 0.5em;
+  width: 20em; }
+  .wallContainer .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass {
+    border-color: #545454;
+    border-style: solid;
+    border-width: 0.5em;
+    border-radius: 0.5em;
+    background-color: #007898;
+    padding: 0.3em 0.3em 0.3em 0.3em; }
+    .wallContainer .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .wallInformation {
+      border-color: #545454;
+      border-radius: 5px;
+      border-style: solid;
+      border-width: 0.1em;
+      background-color: #545454;
+      color: white; }
+      .wallContainer .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .wallInformation .wallInformationText {
+        padding: 0.3em 0.3em 0.3em 0.3em;
+        float: left; }
+      .wallContainer .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .wallInformation .deleteContainer {
+        border-color: #545454;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 0.1em;
+        background-color: #007898;
+        color: #dfdfdf;
+        font-size: 1em;
+        padding: 0 0.1em 0.1em 0.1em;
+        float: right;
+        margin: 0 0 0 0.5em;
+        padding: 0.3em 0.3em 0.3em 0.3em; }
+        .wallContainer .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .wallInformation .deleteContainer:hover {
+          background-color: #dfdfdf !important;
+          color: #414141; }
+    .wallContainer .itemsGrid .gridBuilderRowContainer .gridBuilderRowClass .textContainer {
+      background-color: #007898;
+      border-radius: 0.5em;
+      color: white; }

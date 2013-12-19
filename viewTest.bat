@@ -13,6 +13,7 @@ python c:/lib/closure/closure-library/closure/bin/closurebuilder.py ^
 --namespace="src.base.helper.arrayHelper" ^
 --namespace="src.site.validation.validateSocialSecurityNumber" ^
 --namespace="src.site.validation.validateText" ^
+--namespace="src.test.view.mainContent.whenCreatingTheWallRefreshHandler" ^
 --namespace="src.test.view.mainContent.whenInitializingAMainContent" ^
 --namespace="src.test.view.workInformation.whenCreatingTheSubmitHandler" ^
 --namespace="src.test.view.workInformation.whenInitializingAWorkInformation" ^

@@ -3,6 +3,7 @@
         clojure.tools.trace
         [hiccup core page]
         [hiccup.middleware :only (wrap-base-url)]
+        [cheshire.core :only (generate-string)]
         [clojure.string :only (blank? join)]
         [storyboard.macro.compojure-macro :only (|-|)]
         [storyboard.view.author :only
@@ -11,9 +12,12 @@
         [storyboard.view.work :only
          (update-work-summary
           update-work-title
+          retrieve-work
           retrieve-work-information)]
-        [storyboard.view.chapter :only (update-chapter-title)]
-        [storyboard.view.page :only (update-page-body)]
+        [storyboard.view.chapter :only
+         (update-chapter-title)]
+        [storyboard.view.page :only
+         (update-page-body retrieve-page-wall-items)]
         storyboard.view.read)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
@@ -28,17 +32,19 @@
        (generate-string (retrieve-work-information (Integer. workId))))
   
   (GET "/retrieveWork/:workId" [workId page]
-       (retrieve-work-and-page (Integer. workId) (Integer. page)))
+       (retrieve-work (Integer. workId) (Integer. page)))
   
+  (GET "/retrieveWall/:subjectId" [subjectId page]
+       (generate-string (retrieve-page-wall-items (Integer. subjectId) (Integer. page))))
   
   ;;  Page Wall
   
-  (GET "/retrievePageWall/:pageId [pageId]"
-       (generate-string ))
+  ;; (GET "/retrievePageWall/:pageId [pageId]"
+  ;;      (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]}))
   
-  (|-| addWallPost ?subjectId ?entryTextbox
-       (do
-         (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
+  ;; (|-| addWallPost ?subjectId ?entryTextbox
+  ;;      (do
+  ;;        (generate-string {:MessageItems [{:Message "success" :MessageType "error"}]})))
   
   
   ;;  Work Information

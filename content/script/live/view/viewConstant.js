@@ -1,5 +1,11 @@
 goog.provide('src.site.view.constant');
 
+/**
+ @const
+ @type {string}
+ @protected
+ */
+src.site.view.constant.List = 'List';
 
 /**
  @const

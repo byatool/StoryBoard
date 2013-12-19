@@ -14,6 +14,14 @@ src.site.view.mainContent.constant.ContainerClass = 'workContentContainer';
  @type {string}
  @protected
  */
+src.site.view.mainContent.constant.WallContainer = 'wallContainer';
+
+
+/**
+ @const
+ @type {string}
+ @protected
+ */
 src.site.view.mainContent.constant.WorkContainer = 'workContainer';
 
 

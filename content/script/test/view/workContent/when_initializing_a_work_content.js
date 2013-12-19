@@ -32,11 +32,13 @@ src.test.view.workContent.whenInitializingAWorkContentGrid.describe = function (
   var WorkBodyUrl_ = goog.string.getRandomString();
   var WorkTitleUrl_ = goog.string.getRandomString();
   
+  var callOnRefresh_;
   var initializeTheGrid_;
   
   //Test Hooks
   
   beforeEach(function() {
+    callOnRefresh_ = function(){};
     initializeTheGrid_ = function(){};
   });
   
@@ -45,7 +47,8 @@ src.test.view.workContent.whenInitializingAWorkContentGrid.describe = function (
   
   var callTheMethod_ = function() {
     return Current_.initialize(WorkId_, RetrieveWorkUrl_, ChapterTitleUrl_,
-                               WorkTitleUrl_, WorkBodyUrl_, initializeTheGrid_);
+                               WorkTitleUrl_, WorkBodyUrl_, callOnRefresh_,
+                               initializeTheGrid_);
   };
   
   
@@ -64,6 +67,7 @@ src.test.view.workContent.whenInitializingAWorkContentGrid.describe = function (
         options[GridBuilderConstant_.Map][GridBuilderConstant_.HeaderText] === '' &&
         options[GridBuilderConstant_.Map][GridBuilderConstant_.PropertyName] === '' &&
         options[GridBuilderConstant_.Map][ControlConstant_.Class] === '' &&
+        options[GridBuilderConstant_.CallOnRefresh] === callOnRefresh_ &&
         options[Constant_.ChapterTitleUrl] === ChapterTitleUrl_ &&
         options[Constant_.WorkBodyUrl] === WorkBodyUrl_ &&
         options[Constant_.WorkTitleUrl] === WorkTitleUrl_ &&

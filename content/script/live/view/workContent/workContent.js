@@ -24,6 +24,8 @@ goog.provide('src.site.view.workContent');
  work title.
  @param {string} workBodyUrl The url needed to update the
  body text.
+ @param {function} callOnRefresh The function to pass to the
+ grid for when a new page is selected.
  @param {?function} initializeTheGrid The function used to
  fill the grid.
  @return {Object} The created content grid.
@@ -31,7 +33,8 @@ goog.provide('src.site.view.workContent');
  */
 src.site.view.workContent.initialize =
   function(workId, retrieveWorkUrl, chapterTitleUrl,
-           workTitleUrl, workBodyUrl, initializeTheGrid) {
+           workTitleUrl, workBodyUrl, callOnRefresh,
+           initializeTheGrid) {
     
     initializeTheGrid = initializeTheGrid ?
       initializeTheGrid :
@@ -66,11 +69,8 @@ src.site.view.workContent.initialize =
     contentGridOptions[Constant_.WorkTitleUrl] = workTitleUrl;
     contentGridOptions[GridBuilderConstant_.CreateARow] = WorkContentRow_.create;
     
-    //This is for the wall refresh... function should be passed in
-    //src.site.view.constant.PageId
-    //src.base.control.gridBuilder.constant.ListProperty
-    //contentGridOptions[GridBuilderConstant_.CallOnRefresh] = function(result) { alert(result['List'][0]['pageId']); };
-    
+    contentGridOptions[GridBuilderConstant_.CallOnRefresh] = callOnRefresh;
+     
     return initializeTheGrid(contentGridOptions);
   };
 

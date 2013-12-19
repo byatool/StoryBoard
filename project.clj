@@ -7,7 +7,8 @@
                  [lib-noir "0.7.0"]
                  [cheshire "5.2.0"]
                  [faker "0.2.2"]
-                 [org.clojure/tools.trace "0.7.6"]]
+                 [org.clojure/tools.trace "0.7.6"]
+                 [org.clojure/math.numeric-tower "0.0.2"]]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler storyboard.view.handler/app}
   :profiles

@@ -1,7 +1,7 @@
 goog.require('goog.string');
 goog.require('src.base.control.controlConstant');
-goog.require('src.base.control.gridBuilder');
 goog.require('src.base.control.gridBuilder.constant');
+goog.require('src.base.control.wall');
 goog.require('src.site.view.constant');
 goog.require('src.site.view.mainContent');
 goog.require('src.site.view.workContent');
@@ -33,29 +33,43 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   
   //Fields
   
-  
   var ChapterTitleUrl_ = goog.string.getRandomString();
   var ContainerId_ = goog.string.getRandomString();
+  var DeleteWallItemUrl_ = goog.string.getRandomString();
+  var EditWallItemUrl_ = goog.string.getRandomString();
+  var PageId_ = goog.string.getRandomString();
+  var PostWallTo_ = goog.string.getRandomString();
+  var RetrieveWallItemsUrl_ = goog.string.getRandomString();
   var RetrieveWorkUrl_ = goog.string.getRandomString();
   var WorkBodyUrl_ = goog.string.getRandomString();
   var WorkId_ = goog.string.getRandomString();
   var WorkTitleUrl_ = goog.string.getRandomString();
   
+  
   var appendChild_;
   var createClearDiv_;
+  var createWallRefreshHandler_;
   var createADiv_;
+  var document_;
   var grid_;
   var gridResult_;
   var initializeTheGrid_;
+  var initializeTheWall_;
   var initializeWorkInformation_;
   var options_;
   var parentContainer_;
+  var wall_;
+  var wallResult_;
   
   
   //Test Hooks
   
   beforeEach(function() {
+    document_ = {};
     parentContainer_ = {};
+    
+    
+    
     
     grid_ = {};
     gridResult_ = {};
@@ -76,19 +90,27 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
         break;
       }};
     
+    wall_ = {};
+    wallResult_ = {};
+    wallResult_[ControlConstant_.CreatedControl] = wall_;
+    initializeTheWall_ = function(){ return wallResult_; };
+    
     appendChild_ = function() {};
     createClearDiv_ = function(){};
-    initializeWorkInformation_ = function(){}; 
+    createWallRefreshHandler_ = function(){};
+    initializeWorkInformation_ = function(){};
   });
   
   
   //Support Methods
   
   var callTheMethod_ = function() {
-    return Current_.initialize(WorkId_, RetrieveWorkUrl_, ChapterTitleUrl_, WorkTitleUrl_, WorkBodyUrl_,
-                               RetrieveInformation_, AuthorNameUpdate_, AuthorSummaryUpdate_, WorkTitleUpdate_,
-                               WorkSummaryUpdate_, ContainerId_, createADiv_, initializeWorkInformation_,
-                               initializeTheGrid_, createClearDiv_, appendChild_);
+    return Current_.initialize(WorkId_, PageId_, document_, RetrieveWorkUrl_, ChapterTitleUrl_, WorkTitleUrl_,
+                               WorkBodyUrl_, RetrieveInformation_, AuthorNameUpdate_, AuthorSummaryUpdate_,
+                               WorkTitleUpdate_, WorkSummaryUpdate_, ContainerId_, PostWallTo_,
+                               RetrieveWallItemsUrl_, DeleteWallItemUrl_, EditWallItemUrl_, createADiv_,
+                               initializeWorkInformation_, initializeTheGrid_, initializeTheWall_,
+                               createClearDiv_, createWallRefreshHandler_, appendChild_);
   };
   
   
@@ -112,9 +134,36 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   });
   
   
+  it('should create the page wall control.', function() {
+    var methodWasCalled = false;
+    
+    initializeTheWall_ = function(document, containerId, postTo, retrieveItemsUrl, deleteUrl,
+                                  subjectId, editableUrl){
+      methodWasCalled = Constant_.WallContainer !== undefined && 
+        document === document_ &&
+        containerId === Constant_.WallContainer &&
+        postTo === PostWallTo_ &&
+        retrieveItemsUrl === RetrieveWallItemsUrl_ &&
+        deleteUrl === DeleteWallItemUrl_ &&
+        subjectId === PageId_ &&
+        editableUrl === EditWallItemUrl_;
+
+      return wallResult_;
+    };
+    
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+
+  
+  
   
   it('should create the work information control.', function() {
     var methodWasCalled = false;
+    
+    
     
     initializeWorkInformation_ = function(workId, containerId, retrieveInformation, authorNameUpdate,
                                           authorSummaryUpdate, workTitleUpdate, workSummaryUpdate){
@@ -155,15 +204,40 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
   });
   
   
+  it('should create the wall refresh handler.', function() {
+    var methodWasCalled = false;
+    
+    createWallRefreshHandler_ = function(result, refreshGrid){
+      methodWasCalled = result === wallResult_ &&
+        refreshGrid ===  src.base.control.wall.refresh;
+    };
+    
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+  
+  
   it('should initialize the work content grid.', function() {
     var methodWasCalled = false;
     
-    initializeTheGrid_ = function(workId, retrieveWorkUrl, chapterTitleUrl, workTitleUrl, workBodyUrl){
+    var wallRefreshHandler_ = function(){};
+    
+    
+    createWallRefreshHandler_ = function(){
+      return wallRefreshHandler_;
+    };
+    
+    initializeTheGrid_ = function(workId, retrieveWorkUrl, chapterTitleUrl,
+                                  workTitleUrl, workBodyUrl, callOnRefresh){
+      
       methodWasCalled = workId === WorkId_ &&
         retrieveWorkUrl === RetrieveWorkUrl_ &&
         chapterTitleUrl === ChapterTitleUrl_ &&
         workTitleUrl ===  WorkTitleUrl_ &&
-        workBodyUrl === WorkBodyUrl_;
+        workBodyUrl === WorkBodyUrl_ &&
+        callOnRefresh === wallRefreshHandler_;
       
       return grid_;
     };
@@ -186,8 +260,22 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
     
     expect(methodWasCalled).toBe(true);
   });
-  
 
+  
+  it('should append the wall to the parent.', function() {
+    var methodWasCalled = false;
+    
+    appendChild_ = function(parent, child){
+      methodWasCalled = methodWasCalled || 
+        (parent === parentContainer_ && child === wall_);
+    };
+    
+    callTheMethod_();
+    
+    expect(methodWasCalled).toBe(true);
+  });
+   
+  
   it('should append a clear div.', function() {
     var methodWasCalled = false;
     var clearDiv = {};
@@ -217,7 +305,3 @@ src.test.view.mainContent.whenInitializingAMainContent.describe = function () {
 describe('When initializing a MainContent, it', function() {
   src.test.view.mainContent.whenInitializingAMainContent.describe();
 });
-
-
-
-
